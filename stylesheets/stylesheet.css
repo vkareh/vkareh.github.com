@@ -552,28 +552,28 @@ footer a:hover {
   padding-left: 0.5em;
 }
 
-ul.contact {
+.contact {
   font-size: large;
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
 }
 
-ul.contact .email-name:after {
+.contact .email-name:after {
   content: "vkareh";
 }
 
-ul.contact .email-at:after {
+.contact .email-at:after {
   content: " [at] ";
 }
 
-ul.contact .email-domain:after {
+.contact .email-domain:after {
   content: "vkareh";
 }
 
-ul.contact .email-dot:after {
+.contact .email-dot:after {
   content: " [dot] ";
 }
 
-ul.contact .email-tld:after {
+.contact .email-tld:after {
   content: "net";
 }
 
