@@ -552,6 +552,31 @@ footer a:hover {
   padding-left: 0.5em;
 }
 
+ul.contact {
+  font-size: large;
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+}
+
+ul.contact .email-name:after {
+  content: "vkareh";
+}
+
+ul.contact .email-at:after {
+  content: " [at] ";
+}
+
+ul.contact .email-domain:after {
+  content: "vkareh";
+}
+
+ul.contact .email-dot:after {
+  content: " [dot] ";
+}
+
+ul.contact .email-tld:after {
+  content: "net";
+}
+
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {}
 
