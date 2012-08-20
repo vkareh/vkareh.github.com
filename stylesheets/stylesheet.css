@@ -493,6 +493,29 @@ footer a:hover {
   }
 }
 
+/* FRONT PAGE */
+/*
+.boxes {
+  width: 900px;
+}
+*/
+
+/*
+.box {
+  width: 270px;
+  float: left;
+  clear: none;
+  font-size: small;
+  padding: 1em;
+  border: solid 1px #eeeeec;
+}
+*/
+
+.box img {
+  float: left;
+  padding-right: 1em;
+}
+
 /* CURRICULUM VITAE */
 .project {
   padding-left: 2.8em;
@@ -552,6 +575,7 @@ footer a:hover {
   padding-left: 0.5em;
 }
 
+/* CONTACT */
 .contact {
   font-size: large;
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
