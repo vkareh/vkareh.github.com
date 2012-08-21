@@ -494,25 +494,13 @@ footer a:hover {
 }
 
 /* FRONT PAGE */
-/*
-.boxes {
-  width: 900px;
+.box h3 {
+  clear: both;
 }
-*/
-
-/*
-.box {
-  width: 270px;
-  float: left;
-  clear: none;
-  font-size: small;
-  padding: 1em;
-  border: solid 1px #eeeeec;
-}
-*/
 
 .box img {
   float: left;
+  clear: both;
   padding-right: 1em;
 }
 
