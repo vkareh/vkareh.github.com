@@ -5,28 +5,28 @@
     <link>http://vkareh.github.com/blog/index.html</link>
     <description>Professional Drupal and node.js development for functional websites.</description>
     <language>en-us</language>
-    <pubDate>Fri, 24 Aug 2012 00:00:00 +0400</pubDate>
-    <lastBuildDate>Fri, 24 Aug 2012 00:00:00 +0400</lastBuildDate>
+    <pubDate>Fri, 24 Aug 2012 00:00:00 -0400</pubDate>
+    <lastBuildDate>Fri, 24 Aug 2012 00:00:00 -0400</lastBuildDate>
     <atom:link href="http://vkareh.github.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>InnoDB on Ubuntu?</title>
       <link>http://vkareh.github.com/blog/innodb-ubuntu.html</link>
       <description>I'm currently working on a Drupal 6.x website that recently changed its database storage engine to InnoDB. I was not very aware at the time, but it does have some issues while running on Ubuntu.&lt;br /&gt;&lt;a href="http://vkareh.github.com/blog/innodb-ubuntu.html"&gt;Read more...&lt;/a&gt;</description>
-      <pubDate>Tue, 03 May 2011 00:00:00 +0400</pubDate>
+      <pubDate>Tue, 03 May 2011 00:00:00 -0400</pubDate>
       <guid isPermaLink="false">http://vkareh.github.com/blog/innodb-ubuntu.html</guid>
     </item>
     <item>
       <title>Render Arrays</title>
       <link>http://vkareh.github.com/blog/render-arrays.html</link>
       <description>It seems that documentation on renderable arrays for Drupal 7 is lacking. I was working on upgrading the Multistep module to Drupal 7, and turns out that the navigation/progress-bar block was still returning an HTML string. Unacceptable. I need to fix that by returning Render Arrays instead.&lt;br /&gt;&lt;a href="http://vkareh.github.com/blog/render-arrays.html"&gt;Read more...&lt;/a&gt;</description>
-      <pubDate>Thu, 03 Feb 2011 00:00:00 +0400</pubDate>
+      <pubDate>Thu, 03 Feb 2011 00:00:00 -0400</pubDate>
       <guid isPermaLink="false">http://vkareh.github.com/blog/render-arrays.html</guid>
     </item>
     <item>
       <title>nid in $form_state</title>
       <link>http://vkareh.github.com/blog/nid-formstate.html</link>
       <description>The other day I had an interesting "chicken-and-egg" problem.&lt;br /&gt;&lt;a href="http://vkareh.github.com/blog/nid-formstate.html"&gt;Read more...&lt;/a&gt;</description>
-      <pubDate>Tue, 07 Dec 2010 00:00:00 +0400</pubDate>
+      <pubDate>Tue, 07 Dec 2010 00:00:00 -0400</pubDate>
       <guid isPermaLink="false">http://vkareh.github.com/blog/nid-formstate.html</guid>
     </item>
   </channel>
