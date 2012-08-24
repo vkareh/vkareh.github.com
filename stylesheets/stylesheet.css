@@ -563,6 +563,40 @@ footer a:hover {
   padding-left: 0.5em;
 }
 
+/* BLOG */
+ul#post-list li {
+  list-style: none;
+}
+
+ul#post-list li a {
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+  font-size: x-large;
+}
+
+ul#post-list li a:before {
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+  content: "* ";
+  color: #9ddcff;
+  margin-left: -1em;
+}
+
+ul#post-list li .list-date {
+  color: #aaa;
+  font-style: italic;
+  font-size: small;
+  position: absolute;
+  left: 500px;
+  margin-top: 0.9em;
+}
+
+#post-date {
+  color: #aaa;
+  font-style: italic;
+  font-size: small;
+  margin-top: -1em;
+  margin-bottom: 1em;
+}
+
 /* CONTACT */
 .contact {
   font-size: large;

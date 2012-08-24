@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" href="../images/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>nid in $form_state | vkareh.net, LLC</title>
+  </head>
+
+  <!--
+    Thanks for checking out my website source code!
+    I enjoy following coding standards and best practices and I take great pride in my code.
+    Feel free to contact me to discuss projects.
+  -->
+
+  <body>
+
+    <header>
+      <div class="inner">
+        <h1>vkareh.net</h1>
+        <h2>Professional Drupal and node.js development for functional websites.</h2>
+      </div>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html" title="Home">Home</a></li>
+        <li><a href="../about.html" title="About">About</a></li>
+        <li><a href="../cv.html" title="Curriculum vit&aelig;">Curriculum vit&aelig;</a></li>
+        <li><a href="../blog/index.html" title="Blog" class="active">Blog</a></li>
+        <li><a href="../contact.html" title="Contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+
+        <section id="main-content">
+          <h3>nid in $form_state</h3>
+          <div id="post-date">December 7, 2010</div>
+          <p>The other day I had an interesting "chicken-and-egg" problem. I'm creating a new module that does the following:</p>
+          <ol>
+            <li>A user creates a node</li>
+            <li>The node creation generates a list of follow-up nodes (with references to itself) to be created by the user at a later date</li>
+            <li>When the user goes to create these follow-up nodes, the list should be updated to include the nid of both nodes, and which follow-up sequence this was for</li>
+          </ol>
+          <p>This all [mostly] worked well, with one exception: if I add a <code>$form['#submit'][] = 'my_submit_function';</code>, it runs <em>before</em> the <code>node_form_submit()</code> happens, in which case I don't have the node ID to store. But I also needed to pass the follow-up sequence as a hidden variable in the form, URL, or anywhere.</p>
+          <p><strong>So, if I use the submit function, I have the $form_state, but not the node ID. If I use the hook_nodeapi(), I have the node ID, but not the form state.</strong></p>
+          <p>One workaround I found was to use then <code>$form['buttons']['submit']['#submit'][] = 'my_submit_function';</code> and that worked wonderfully!</p>
+          <p>I wasn't satisfied, though.</p>
+          <p>My intention is to make this module as generic as possible, which means that someone using it might decide to, say, <em>remove the submit button!</em>, in which case my plan to take over the node fails.</p>
+          <p>I was left with backtracking the <code>node_form_submit()</code> until where it's actually saved. Surprise! I realized that at some point something like this happens: <code>$node = $form_state['values'];</code> &lt;-- WARNING: that's not what happens for real!</p>
+          <p>But you get the idea.</p>
+          <p>What that means is that <code>$form_state['values']</code> is actually the $node object during node insert/update. Victory! The entire thing worked as follows:</p>
+<pre>
+function my_form_alter(&$form, &$form_state, $form_id) {
+  $form['hiddenvalue'] = array(
+    '#type' => 'value',
+    '#value' => 'some value here',
+  );
+}
+function my_nodeapi(&$node, $op, $a3, $a4) {
+  switch ($op) {
+    case 'insert':
+    case 'update':
+      dpm($node->hiddenvalue); // prints 'some value here' ... Yay!
+      break;
+  }
+}
+</pre>
+          <p>Keep in mind that this <code>$node->hiddenvalue</code> will only exist within the context of the node submission. Mainly during <code>hook_nodeapi</code>, where <code>$op</code> is either <em>insert</em> or <em>update</em>. If you load the node from the database, that <em>hiddenvalue</em> won't be there, of course.</p>
+          <ul>
+            <li>What other scenarios can you think where this would be useful?</li>
+            <li>What other ways have you found to get the <em>nid</em> from within the submit function?</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2012 vkareh.net, LLC
+    </footer>
+
+  </body>
+</html>

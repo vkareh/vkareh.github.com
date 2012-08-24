@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" href="../images/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Render Arrays | vkareh.net, LLC</title>
+  </head>
+
+  <!--
+    Thanks for checking out my website source code!
+    I enjoy following coding standards and best practices and I take great pride in my code.
+    Feel free to contact me to discuss projects.
+  -->
+
+  <body>
+
+    <header>
+      <div class="inner">
+        <h1>vkareh.net</h1>
+        <h2>Professional Drupal and node.js development for functional websites.</h2>
+      </div>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html" title="Home">Home</a></li>
+        <li><a href="../about.html" title="About">About</a></li>
+        <li><a href="../cv.html" title="Curriculum vit&aelig;">Curriculum vit&aelig;</a></li>
+        <li><a href="../blog/index.html" title="Blog" class="active">Blog</a></li>
+        <li><a href="../contact.html" title="Contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+
+        <section id="main-content">
+          <h3>Render Arrays</h3>
+          <div id="post-date">February 2, 2011</div>
+          <p>It seems that documentation on renderable arrays for Drupal 7 is lacking.</p>
+          <p>I was working on upgrading the <a href="http://drupal.org/project/multistep">Multistep</a> module to Drupal 7, and turns out that the navigation/progress-bar block was still returning an HTML string. Unacceptable. I need to fix that by returning Render Arrays instead.</p>
+          <p>After searching for a while, the best I came up with was <a href="http://drupal.org/node/930760">Render Arrays in Drupal 7</a> and the <a href="http://drupal.org/project/examples">Examples for Developers</a> module, by <a href="http://drupal.org/user/30906">rfay</a>. Digging through the code, I found some definite gems, but still had to figure most of my way around for creating my own theming function that handles Render Arrays.</p>
+          <p>The trick to understanding Render Arrays is to think about the Form API: structured arrays that define the elements and behavior of the final renderable product. Armed with this information, I proceeded to run some preliminary testing.</p>
+          <p>This is the first one:</p>
+<pre>
+/**
+ * Implements of hook_block_view().
+ */
+function example_block_view($delta = '') {
+  return array(
+    'subject' => t('My block'),
+    'content' => array(
+      '#markup' => t('Hello renderer!'),
+    ),
+  );
+}
+</pre>
+          <img src="images/screenshot1.png" alt="Render Arrays" title="Render Arrays" />
+          <p>You'll notice that this is no different from any other $form element around. Now, there are other properties that I played with, mainly #theme. My next test uses #theme to display a list of items:</p>
+<pre>
+/**
+ * Implements of hook_block_view().
+ */
+function example_block_view($delta = '') {
+  return array(
+    'subject' => t('My block'),
+    'content' => array(
+      '#theme' => 'item_list',
+      '#items' => array('Item 1', 'Item 2', 'Item 3'),
+    ),
+  );
+}
+</pre>
+          <img src="images/screenshot2.png" alt="Render Arrays" title="Render Arrays" />
+          <p>It actually took me a while to figure out that I wanted to pass the list of items inside the #items property. From the <a href="http://api.drupal.org/api/drupal/includes--theme.inc/function/theme_item_list/7">theme_item_list()</a> API, you can see that it takes one parameter: $variable. This is an array that contains <em>items</em>, <em>title</em>, <em>type</em>, <em>attributes</em>. By that same logic, I should be able to pass any of those values as a property of the Render Array:</p>
+<pre>
+/**
+ * Implements of hook_block_view().
+ */
+function example_block_view($delta = '') {
+  return array(
+    'subject' => t('My block'),
+    'content' => array(
+      '#theme' => 'item_list',
+      '#items' => array('Item 1', 'Item 2', 'Item 3'),
+      '#title' => t('My item list'),
+      '#type' => 'ol',
+    ),
+  );
+}
+</pre>
+          <img src="images/screenshot3.png" alt="Render Arrays" title="Render Arrays" />
+          <p>Success! I am now confident that I can pretty much return renderable arrays for most implementations of theme_HOOK() (those theme functions registered through <a href="http://api.drupal.org/api/drupal/modules--system--system.api.php/function/hook_theme/7">hook_theme()</a>).</p>
+          <p>What about custom theme functions, though? That's what I really wanted for my module: returning Render Arrays for my custom theme functions. For that, I ended up using two different ways: render elements and variables.</p>
+          <p>First, you have to create your theme functions. The ones that will return the actual HTML.</p>
+<pre>
+/**
+ * Displays a list of links.
+ */
+function theme_example_link_list($variables = array()) {
+  $links = array();
+  foreach ($variables['links']['#children'] as $link) {
+    $links[] = l($link['label'], $link['url']);
+  }
+  return theme('item_list', array('items' => $links));
+}
+
+/**
+ * Displays a progress bar.
+ */
+function theme_example_progress_bar($variables = array()) {
+  return '&lt;div id="example-progress-bar"&gt;' . $variables['progress'] . '%&lt;/div&gt;';
+}
+</pre>
+          <p>Then, of course, you have to register your theme functions by implementing hook_theme().</p>
+<pre>
+/**
+ * Implements hook_theme().
+ */
+function example_theme() {
+  return array(
+    'example_link_list' => array(
+      'render element' => 'links',
+    ),
+    'example_progress_bar' => array(
+      'variables' => array(
+        'progress' => NULL,
+      ),
+    ),
+  );
+}
+</pre>
+          <p>Lastly, you return the corresponding Render Array in your hook_block_view() implementation:</p>
+<pre>
+/**
+ * Implements of hook_block_view().
+ */
+function example_block_view($delta = '') {
+  return array(
+    'subject' => t('Test menu'),
+    'content' => array(
+      'some_text' => array(
+        '#markup' => t('This is the block body'),
+      ),
+      'just_a_list_of_links' => array(
+        '#theme' => 'example_link_list',
+        '#children' => array(
+          0 => array(
+            'label' => t('Step 1'),
+            'url' => 'http://www.example.com/1',
+          ),
+          1 => array(
+            'label' => t('Step 2'),
+            'url' => 'http://www.example.com/2',
+          ),
+        ),
+      ),
+      'nice_looking_progress_bar' => array(
+        '#theme' => 'example_progress_bar',
+        '#progress' => $progress,
+      ),
+    ),
+  );
+}
+</pre>
+          <img src="images/screenshot4.png" alt="Render Arrays" title="Render Arrays" />
+          <p>
+            The differences between <em>variables</em> and <em>render element</em> are best explained in the <a href="http://api.drupal.org/api/drupal/modules--system--system.api.php/function/hook_theme/7">hook_theme()</a> documentation, but the basics are:
+            <ul>
+              <li><strong>variable</strong> is an array of variable names that you will pass the theme function.</li>
+              <li><strong>render element</strong> is a the name of the structured array that will hold all the renderable information.</li>
+            </ul>
+            This should be sufficient to get most developers started on returning Render Arrays. For more information about my actual implementation in the Multistep module, browse its <a href="http://drupalcode.org/project/multistep.git/blob/HEAD:/multistep.module#l155">source code</a>.
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2012 vkareh.net, LLC
+    </footer>
+
+  </body>
+</html>

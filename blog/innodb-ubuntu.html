@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" href="../images/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>InnoDB on Ubuntu? | vkareh.net, LLC</title>
+  </head>
+
+  <!--
+    Thanks for checking out my website source code!
+    I enjoy following coding standards and best practices and I take great pride in my code.
+    Feel free to contact me to discuss projects.
+  -->
+
+  <body>
+
+    <header>
+      <div class="inner">
+        <h1>vkareh.net</h1>
+        <h2>Professional Drupal and node.js development for functional websites.</h2>
+      </div>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html" title="Home">Home</a></li>
+        <li><a href="../about.html" title="About">About</a></li>
+        <li><a href="../cv.html" title="Curriculum vit&aelig;">Curriculum vit&aelig;</a></li>
+        <li><a href="../blog/index.html" title="Blog" class="active">Blog</a></li>
+        <li><a href="../contact.html" title="Contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+
+        <section id="main-content">
+          <h3>InnoDB on Ubuntu?</h3>
+          <div id="post-date">May 3, 2011</div>
+          <p>I'm currently working on a Drupal 6.x website that recently changed its database storage engine to InnoDB. I was not very aware at the time, but it does have some issues while running on Ubuntu.</p>
+          <p>Of course, I do all my development locally and I recently upgraded to the shiny new Ubuntu 11.04. For a while I blamed the ridiculously slow speed of this particular database to the OS upgrade, as, for some reason, I had to re-install my entire LAMP stack after the upgrade; the MyISAM to InnoDB switch happened around the same time.</p>
+          <p>Something is not right when Views takes minutes to save. Another <a href="http://timverly.com">Drupalista</a> working on the website is using Ubuntu as well, so we decided to look into the matter. We could not find a proper solution right away, but decided that, for sanity's sake, we can just change our local databases to run MyISAM instead. There's no way to do a bulk change of database storage engine, so we came up with the following SQL query:</p>
+          <p><code>SELECT CONCAT('ALTER TABLE ',table_schema,'.',table_name,' engine=MyISAM;') FROM information_schema.tables WHERE engine = 'InnoDB' AND table_schema = 'DATABASE_NAME';</code></p>
+          <p>Change <em>DATABASE_NAME</em> to the database name, of course. Copy &amp; paste the results into a text editor and remove whatever embellishing characters your MySQL client decides to add to the results table, then save the file with a .sql extension. The result of this is a nice list of queries that will bring back speed into your database life, for the time being.</p>
+          <p>I do not know for sure what the problem is, but this seems like a temporary fix. I wonder if anyone in the community has had similar experiences...</p>
+          <p>Let me know in the comments.</p>
+        </section>
+
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2012 vkareh.net, LLC
+    </footer>
+
+  </body>
+</html>

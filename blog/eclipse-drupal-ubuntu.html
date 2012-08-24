@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" href="../images/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Eclipse for Drupal in Ubuntu | vkareh.net, LLC</title>
+  </head>
+
+  <!--
+    Thanks for checking out my website source code!
+    I enjoy following coding standards and best practices and I take great pride in my code.
+    Feel free to contact me to discuss projects.
+  -->
+
+  <body>
+
+    <header>
+      <div class="inner">
+        <h1>vkareh.net</h1>
+        <h2>Professional Drupal and node.js development for functional websites.</h2>
+      </div>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html" title="Home">Home</a></li>
+        <li><a href="../about.html" title="About">About</a></li>
+        <li><a href="../cv.html" title="Curriculum vit&aelig;">Curriculum vit&aelig;</a></li>
+        <li><a href="../blog/index.html" title="Blog" class="active">Blog</a></li>
+        <li><a href="../contact.html" title="Contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+
+        <section id="main-content">
+          <h3>Eclipse for Drupal in Ubuntu</h3>
+          <div id="post-date">October 31, 2010</div>
+          <p>It took me a while to finally break down and install Eclipse and actually use it for Drupal development. In my mind it was one of those daunting tasks that I never thought I'd complete. Once you start using it for real, though, it feels like you finally got the Swiss Army knife you've always wanted, but now it's too big to fit in your pocket.</p>
+          <p>Very recently I got assigned to a new project for <a href="http://www.healthmedia.com/">HealthMedia, Inc.</a> (owned by corporate giant <a href="http://www.jnj.com/">Johnson & Johnson</a>). The specifics of the project are not up for discussion, but it turns out that it's a Drupal front-end linked to an in-house web services backend. The complexity of the system is such that a middleware had to be developed to take care of a lot pre-processing before Drupal can consume the serviced data in a usable fashion.</p>
+          <p>Using Eclipse, I'm able to quickly traverse the code and set breakpoints all over the place. There are clear visual cues coming up in Eclipse's several panels alerting you of wrong code, suspicious statements, search results, etc. Multiple views allow you browse the code tree, debug, compare versions of the code, and print out tasks and server output.</p>
+          <p>This all comes at a cost. The versatility and power of Eclipse, and the fact that it works equally well in any platform, means that you have to put up with a lot of overhead. Eclipse is written in Java; there is no native version of any other graphical toolkit. No GTK+, no QT. That, in itself, means that you have to load the entire Java Virtual Machine and it's graphical toolkit (along with all of its required libraries) just for that one program. The way Eclipse works, and one of the reasons why it's so good, means that everytime you change your code, it re-indexes related functions and variables. It is a great advantage, but it eats up a lot of CPU cycles. When you are running your enitre development environment locally, CPU cycles can be precious and your computer might be brought down to a crawl.</p>
+          <p>In any case, if you're reading this far, it probably means that you are either very interested, or have no choice. Let's move on to actually setting it up.</p>
+          <p>For this system I'm assuming <a href="http://www.ubuntu.com/">Ubuntu</a> 10.10. </p>
+
+          <h4>Install the LAMP stack</h4>
+          <p><a href="https://help.ubuntu.com/community/ApacheMySQLPHP">https://help.ubuntu.com/community/ApacheMySQLPHP</a></p>
+          <p>The easies way is to do this through the terminal. Go ahead and click on Applications -> Accessories -> Terminal and paste in the following command:</p>
+          <p><code>sudo apt-get install apache2 php5 libapache-mod-php5 mysql-server libapache2-mod-auth-mysql php5-mysql phpmyadmin</code></p>
+          <p>This will install <a href="http://www.apache.org/">Apache</a>, <a href="http://www.mysql.com/">MySQL</a>, <a href="http://www.php.net/">PHP</a>, and <a href="http://www.phpmyadmin.net/home_page/index.php">phpmyadmin</a> (a web-based database administration tool). I could go into details on how to configure each one of these, but that would be a subject for another day. For now, visit the URL above to read up on that.</p>
+
+          <h4>Install Xdebug</h4>
+          <p><a href="http://www.xdebug.org">http://www.xdebug.org</a></p>
+          <p>Same here. Most of the commands for installing anything will be using <code>apt-get</code>, since it's the easiest way. Run this command:</p>
+          <p><code>sudo apt-get install php5-xdebug</code></p>
+          <p>Now, to configure it, open the xdebug configuration file (<code>nano /etc/php5/conf.d/xdebug.ini</code>) and paste the following:</p>
+<pre>
+[debug]
+; Remote settings
+xdebug.remote_autostart=off
+xdebug.remote_enable=on
+xdebug.remote_handler=dbgp
+xdebug.remote_mode=req
+xdebug.remote_host=localhost
+xdebug.remote_port=9000
+
+; General
+xdebug.auto_trace=off
+xdebug.collect_includes=on
+xdebug.collect_params=off
+xdebug.collect_return=off
+xdebug.default_enable=on
+xdebug.extended_info=1
+xdebug.manual_url=http://www.php.net
+xdebug.show_local_vars=0
+xdebug.show_mem_delta=0
+xdebug.max_nesting_level=100
+;xdebug.idekey=
+
+; Trace options
+xdebug.trace_format=0
+xdebug.trace_output_dir=/tmp
+xdebug.trace_options=0
+xdebug.trace_output_name=crc32
+
+; Profiling
+xdebug.profiler_append=0
+xdebug.profiler_enable=0
+xdebug.profiler_enable_trigger=0
+xdebug.profiler_output_dir=/tmp
+xdebug.profiler_output_name=crc32
+</pre>
+          <p>I originally got this code from <a href="http://www.apaddedcell.com/easy-php-debugging-ubuntu-using-xdebug-and-vim">http://www.apaddedcell.com/easy-php-debugging-ubuntu-using-xdebug-and-vim</a>, which explains how to setup xdebug for vi. For all practical purposes, the configuration is the same.</p>
+          <p>Let us leave Xdebug for now and install other things. We'll go back to it later.</p>
+
+          <h4>Install Drush</h4>
+          <p><a href="http://drupal.org/project/drush">http://drupal.org/project/drush</a></p>
+          <p>Drush will allow you to perform Drupal maintenance tasks from the command line. Pretty nifty utility. If you use Ubuntu, you're in luck! Run this command:</p>
+          <p><code>sudo apt-get install drush</code></p>
+          <p>If not, you will have to make sure you have <a href="http://www.nongnu.org/cvs/">CVS</a> installed:</p>
+          <p><code>sudo apt-get install cvs</code></p>
+          <p>Then, you have to run the following set of commands to install Drush:</p>
+<pre>cd /usr/local/share
+sudo cvs -z6 -d:pserver:anonymous:anonymous@cvs.drupal.org:/cvs/drupal-contrib checkout -d drush contributions/modules/drush/
+cd /usr/local/bin
+sudo ln -s /usr/local/share/drush/drush .
+</pre>
+          <p>That will install Drush on your /usr/local/share/drush folder and create a symbolic link on /usr/local/bin so that you can run Drush from wherever you are in the terminal.</p>
+
+          <h4>Install jQuery libraries</h4>
+          <p><a href="http://jquery.com">http://jquery.com</a></p>
+          <p>This is not strictly necessary, but Drupal uses jQuery, so it could be nice to link the libraries into Eclipse, independent from any Drupal installation, so that they are available in your project.</p>
+          <p><code>sudo apt-get install libjs-jquery libjs-jquery-ui</code></p>
+
+          <h4>Downgrade PHP to 5.2</h4>
+          <p>Now, this part is tricky. PHP 5.3 changed a few things in the language construct that Drupal modules are not necessarily aware of. I won't go on about the details of these changes. Suffice it to say that not all Drupal modules out there are fully compatible with PHP 5.3. This is not strictly necessary either, but if you see that your web server starts complaining, you can use this to downgrade to PHP 5.2.</p>
+          <p>I found that this script works better when you run it after installing all your PHP stuff. If you ever need to install anything else that depends on PHP, you should re-run the script to make sure it's all part of the same version.</p>
+<pre>#!/bin/bash
+# store list of installed PHP packages
+php_installed=`dpkg -l | grep php| awk '{print $2}' |tr "\n" " "`
+# install Aptitude
+sudo apt-get install aptitude
+# remove all PHP packages
+sudo aptitude purge $php_installed
+# use PHP packages from Karmic
+# pin-params: a (archive), c (components), v (version), o (origin) and l (label).
+echo -e "Package: php5\nPin: release a=karmic\nPin-Priority: 991\n"  | sudo tee /etc/apt/preferences.d/php > /dev/null
+apt-cache search php5-|grep php5-|awk '{print "Package:", $1,"\nPin: release a=karmic\nPin-Priority: 991\n"}'|sudo tee -a /etc/apt/preferences.d/php > /dev/null
+apt-cache search -n libapache2-mod-php5 |awk '{print "Package:", $1,"\nPin: release a=karmic\nPin-Priority: 991\n"}'| sudo tee -a /etc/apt/preferences.d/php > /dev/null
+echo -e "Package: php-pear\nPin: release a=karmic\nPin-Priority: 991\n"  | sudo tee -a /etc/apt/preferences.d/php > /dev/null
+# add Karmic to source list
+egrep '(main restricted|universe|multiverse)' /etc/apt/sources.list | grep -v "#" | sed s/lucid/karmic/g | sed s/maverick/karmic/g | sudo tee /etc/apt/sources.list.d/karmic.list > /dev/null
+# update package database
+sudo apt-get update
+# install original PHP packages
+sudo apt-get install $php_installed
+# make sure they don't get updated
+sudo aptitude hold `dpkg -l | grep php5| awk '{print $2}' |tr "\n" " "`
+</pre>
+          <p>Copy-paste that code into a text editor, then save as <em>php-downgrade.sh</em> and run the following command to make it executable:</p>
+          <code>chmod +x php-downgrade.sh</code>
+          <p>Then run the file with: <code>./php-downgrade.sh</code></p>
+
+          <h4>Install Eclipse</h4>
+          <p>I know, the whole purpose of this post is to install Eclipse, yet we're a few pages down and <em>now</em> is when I'm actually starting to do that.</p>
+          <p>Up until now, we were just satisfying some dependencies and setting up the entire development environment. This is the last actual program to install. The rest are plugins for Eclipse, as well as configuration.</p>
+          <p>Let's start!</p>
+          <p>You will need to install several components of Eclipse:</p>
+          <code>sudo apt-get install eclipse-platform eclipse-pde eclipse-plugin-cvs</code>
+          <dt>eclipse-platform</dt>
+          <dd>This the base platform for Eclipse. Nothing more.</dd>
+          <br />
+          <dt>eclipse-pde</dt>
+          <dd>This is the Plug-in Development Environment. It's not strictly necessary for Drupal, but you will need it to install other Eclipse plug-ins. Also, you might be interested in Apache ANT for building, deployment, or packaging. That is also here.</dd>
+          <br />
+          <dt>eclipse-plugin-cvs</dt>
+          <dd>This is just one of the many plug-ins for Eclipse. This one just happens to be part of the Ubuntu repositories. So go ahead and install it. It provides CVS integration with Eclipse.</dd>
+          <br />
+          <p>Apart from the CVS plug-in, there are several others that we will need. Eclipse is by default a Java IDE, but its extensibility has allowed the community to make it into pretty much anything with the proper plug-ins.</p>
+          <p>Here's the entire list:</p>
+          <ul>
+            <li><a href="http://www.eclipse.org/mylyn/">Mylyn</a></li>
+            <li><a href="http://www.eclipse.org/pdt/">PDT</a></li>
+            <li><a href="http://www.eclipse.org/dsdp/tm/">Remote System Explorer</a></li>
+            <li><a href="http://www.eclipse.org/eclipse/platform-cvs/">CVS</a></li>
+            <li><a href="http://www.eclipse.org/subversive/">Subversive</a></li>
+            <li><a href="http://download.eclipse.org/egit">EGit</a></li>
+            <li><a href="http://xtnd.us/eclipse/install">XTND.US</a></li>
+            <li><a href="http://www.phpsrc.org/">PHP Tools Integration</a></li>
+          </ul>
+          <p>To install them, open Eclipse and go to <em>Help</em> -> <em>Install New Software</em> and click on the <em>Available Software Sites</em> link to add new URLs. Make sure that the following URLs are there:</p>
+          <ul>
+            <li><a href="http://download.eclipse.org/releases/galileo/">http://download.eclipse.org/releases/galileo/</a></li>
+            <li><a href="http://download.eclipse.org/egit/updates/">http://download.eclipse.org/egit/updates/</a></li>
+            <li><a href="http://xtnd.us/downloads/eclipse">http://xtnd.us/downloads/eclipse</a></li>
+            <li><a href="http://www.phpsrc.org/eclipse/pti/">http://www.phpsrc.org/eclipse/pti/</a></li>
+          </ul>
+          <p>Then select <em>All Available Sites</em> from the drop-down list and select the previous plug-in list from the window. Follow the prompts to finally install the plug-ins.</p>
+          <p>Assuming the plug-in installation went well, all you have left is to configure Eclipse with the proper Drupal-friendly settings. Onwards!</p>
+
+          <h4>Configure Eclipse</h4>
+          <p>Open the Preferences windows and you will be able to browse and change the following settings. Match them as closely as you can.</p>
+          <ul>
+            <li>General > Editors > Text Editors:<ul>
+              <li>Displayed tab width: 2</li>
+              <li>Insert spaces for tabs: Yes</li></ul></li>
+            <li>General > Web Browser: New...<ul>
+              <li>Name: Firefox</li>
+              <li>Location: /usr/bin/firefox</li>
+              <li>Parameters: --new-window %URL%</li></ul></li>
+            <li>PHP > Code Style > Formatter:<ul>
+              <li>Tab policy: Spaces</li>
+              <li>Indentation size: 2</li></ul></li>
+            <li>PHP > Debug<ul>
+              <li>PHP Debugger: XDebug</li></ul></li>
+            <li>Team > CVS: Files and Folders<ul>
+              <li>Convert text files to use platform line ending: No</li>
+              <li>Default text mode: ASCII with keyword expansion (-kkv)</li></ul></li>
+            <li>Web > CSS Files > Editor<ul>
+              <li>Indent using spaces</li>
+              <li>Indentation size: 2</li>
+              <li>Capitalization style: Lowercase</li></ul></li>
+            <li>Web > HTML Files > Editor<ul>
+              <li>Indent using spaces</li>
+              <li>Indentation size: 2</li></ul></li>
+            <li>Web > JavaScript > Code Style > Clean Up: Edit...<ul>
+              <li>Use blocks in if/while/for/do statements: Always</li></ul></li>
+            <li>Web > JavaScript > Code Style > Formatter: Edit...<ul>
+              <li>Tab policy: Spaces only</li>
+              <li>Indentation size: 2</li>
+              <li>Tab size: 2</li>
+              <li>Statements within 'switch' body: Yes</li></ul></li>
+            <li>Web > JavaScript > Include Path > User Libraries: New...<ul>
+              <li>User library name: jQuery</li>
+              <li>Add .js file: /usr/share/javascript/jquery/jquery.js</li>
+              <li>Add .js file: /usr/share/javascript/jquery-ui/jquery-ui.js</li></ul></li>
+          </ul>
+
+          <h5>Configure Debugging</h5>
+          <ul>
+            <li>PHP > PHP Servers<ul>
+              <li>Name: Apache</li>
+              <li>URL: http://localhost</li>
+              <li>Path Mapping: Add...</li>
+              <li>Path on Server: /</li>
+              <li>Path in Workspace: /%PROJECT_NAME%</li></ul></li>
+            <li>PHP > PHP Executables: Add...<ul>
+              <li>Name: PHP</li>
+              <li>Executable path: /usr/bin/php</li>
+              <li>PHP ini file: /etc/php5/apache2/php.ini</li>
+              <li>SAPI Type: CLI</li>
+              <li>PHP debugger: XDebug</li></ul></li>
+          </ul>
+          <p>This configuration now should be done on the Run window, instead of the Preferences. Where it says <em>%PROJECT_ROOT%</em>, substitute for the path to your Drupal website (e.g. /var/www/example/index.php).</p>
+          <ul>
+            <li>Run > Debug Configurations...<ul>
+              <li>PHP Web Page: New</li>
+              <li>Name: Drupal</li>
+              <li>Server Debugger: XDebug</li>
+              <li>PHP Server: Apache</li>
+              <li>File: /%PROJECT_ROOT%/index.php</li>
+              <li>Common: Display in favorites menu: Debug</li></ul></li>
+            </ul>
+          <p>Yay! You're done with all the configuration! Now, to actually use your system...</p>
+
+          <h4>Use your new development environment</h4>
+
+          <h5>Debugging</h5>
+          <ol>
+            <li>Set your breakpoints</li>
+            <li>Click on the bug tool: Drupal</li>
+            <li>PHP Debug perspective should open</li>
+            <li>Click on the Resume button (F8) every time you perform an action, so that the debugger runs through the entire page load.</li>
+          </ol>
+
+          <h5>Checking out CVS modules</h5>
+          <p><a href="http://drupal.org/node/37615">http://drupal.org/node/37615</a></p>
+          <ol>
+            <li>Right-click on /%PROJECT_ROOT%/sites/all/modules: Import... <em>(substitute %PROJECT_ROOT% for your web root)</em><ul>
+              <li>CVS > Project from CVS</li>
+              <li>Host: cvs.drupal.org</li>
+              <li>Repository path: /cvs/drupal-contrib</li>
+              <li>User: %USERNAME% <em>(substitute %USERNAME% for your CVS account username)</em></li>
+              <li>Password: %PASSWORD% <em>(substitute %PASSWORD% for your CVS account passowrd)</em></li>
+              <li>Connection type: pserver</li></ul></li>
+            <li>Browse to /contributions/modules/%MODULE_NAME% <em>(substitute %MODULE_NAME% for your module name)</em><ul>
+              <li>Check out into an existing project</li>
+              <li>Checkout subfolders: Yes</li></ul></li>
+              <li>Select /%PROJECT_ROOT%/sites/all/modules <em>(substitute %PROJECT_ROOT% for your web root)</em></li>
+            <li>Select Tag: Refresh Tags<ul>
+              <li>Branches > DRUPAL-X--Y</li></ul></li>
+          </ol>
+
+          <h5>Using Remote File System</h5>
+          <ol>
+            <li>Open Remote System Explorer perspective</li>
+            <li>Right-click > New Connection...</li>
+            <li>Select Linux and enter the Host name</li>
+            <li>From the following prompts, select ssh.files, processes.shell.linux, ssh.shells, ssh.terminals</li>
+            <li>From the newly created connection, browse to your webroot or project folder</li>
+            <li>Right-click > Create Remote Project</li>
+            <li>Go back to the PHP perspective</li>
+          </ol>
+          <p>Play around and have fun! Debugging can be a very satisfying experience, if done well and with purpose. If you managed to read all the way down to the end of this article: wow! I'm impressed! If not, it's okay, someone, somewhere, will find it useful.</p>
+        </section>
+
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2012 vkareh.net, LLC
+    </footer>
+
+  </body>
+</html>

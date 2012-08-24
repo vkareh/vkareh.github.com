@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" ?><rss version="2.0" xml:base="http://www.vkareh.net/blog" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>vkareh.net, LLC | Professional Drupal development for functional websites</title>
+    <link>http://www.vkareh.net/blog</link>
+    <description>Professional Drupal development for functional websites</description>
+    <language>en</language>
+          <item>
+    <title>InnoDB on Ubuntu?</title>
+    <link>http://www.vkareh.net/blog/innodb-ubuntu</link>
+    <description>&lt;p&gt;I&#039;m currently working on a Drupal 6.x website that recently changed its database storage engine to InnoDB. I was not very aware at the time, but it does have some issues while running on Ubuntu.&lt;/p&gt;
+&lt;p&gt;Of course, I do all my development locally and I recently upgraded to the shiny new Ubuntu 11.04. For a while I blamed the ridiculously slow speed of this particular database to the OS upgrade, as, for some reason, I had to re-install my entire LAMP stack after the upgrade; the MyISAM to InnoDB switch happened around the same time.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/innodb-ubuntu&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/innodb-ubuntu#comments</comments>
+ <category domain="http://www.vkareh.net/tags/databases">Databases</category>
+ <category domain="http://www.vkareh.net/tags/drupal-planet">Drupal Planet</category>
+ <pubDate>Tue, 03 May 2011 21:51:36 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">1292 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>Render Arrays</title>
+    <link>http://www.vkareh.net/blog/render-arrays</link>
+    <description>&lt;p&gt;It seems that documentation on renderable arrays for Drupal 7 is lacking.&lt;/p&gt;
+&lt;p&gt;I was working on upgrading the &lt;a href=&quot;http://drupal.org/project/multistep&quot;&gt;Multistep&lt;/a&gt; module to Drupal 7, and turns out that the navigation/progress-bar block was still returning an HTML string. Unacceptable. I need to fix that by returning Render Arrays instead.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/render-arrays&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/render-arrays#comments</comments>
+ <category domain="http://www.vkareh.net/tags/drupal-planet">Drupal Planet</category>
+ <pubDate>Thu, 03 Feb 2011 01:30:51 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">782 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>nid in $form_state</title>
+    <link>http://www.vkareh.net/blog/nid-formstate</link>
+    <description>&lt;p&gt;The other day I had an interesting &quot;chicken-and-egg&quot; problem. I&#039;m creating a new module that does the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A user creates a node&lt;/li&gt;
+&lt;li&gt;The node creation generates a list of follow-up nodes (with references to itself) to be created by the user at a later date&lt;/li&gt;
+&lt;li&gt;When the user goes to create these follow-up nodes, the list should be updated to include the nid of both nodes, and which follow-up sequence this was for&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/nid-formstate&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/nid-formstate#comments</comments>
+ <category domain="http://www.vkareh.net/tags/drupal-planet">Drupal Planet</category>
+ <pubDate>Tue, 07 Dec 2010 22:53:53 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">508 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>Eclipse for Drupal in Ubuntu</title>
+    <link>http://www.vkareh.net/blog/eclipse-drupal-ubuntu</link>
+    <description>&lt;p&gt;It took me a while to finally break down and install Eclipse and actually use it for Drupal development. In my mind it was one of those daunting tasks that I never thought I&#039;d complete. Once you start using it for real, though, it feels like you finally got the Swiss Army knife you&#039;ve always wanted, but now it&#039;s too big to fit in your pocket.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/eclipse-drupal-ubuntu&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/eclipse-drupal-ubuntu#comments</comments>
+ <category domain="http://www.vkareh.net/tags/drupal-planet">Drupal Planet</category>
+ <category domain="http://www.vkareh.net/tags/eclipse">Eclipse</category>
+ <category domain="http://www.vkareh.net/tags/linux">Linux</category>
+ <pubDate>Sun, 31 Oct 2010 04:54:23 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">309 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>Drupal development in Linux</title>
+    <link>http://www.vkareh.net/blog/drupal-development-linux</link>
+    <description>&lt;p&gt;I am a happy Linux user. I have been using different flavors of Linux for almost a decade now, and haven&#039;t seen Windows since the days of XP Service Pack 1. All my coworkers use Apple products (am I the only web developer that has never owned an Apple product, ever?)&lt;/p&gt;
+
+&lt;p&gt;I eventually settled on Ubuntu for desktop use, although my web server runs CentOS.&lt;/p&gt;
+
+&lt;p&gt;In any case, I swear by &lt;a href=&quot;http://www.vim.org/about.php&quot;&gt;vi&lt;/a&gt;. And for most tasks, it&#039;s all I need for Drupal module development.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/drupal-development-linux&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/drupal-development-linux#comments</comments>
+ <category domain="http://www.vkareh.net/tags/drupal-planet">Drupal Planet</category>
+ <category domain="http://www.vkareh.net/tags/linux">Linux</category>
+ <pubDate>Sat, 02 Oct 2010 20:26:50 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">269 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>Module development and other things</title>
+    <link>http://www.vkareh.net/blog/module-development-and-other-things</link>
+    <description>&lt;p&gt;After almost 9 months working for &lt;a href=&quot;http://www.switchbackcms.com&quot;&gt;Switchback&lt;/a&gt;, I finally sat down to publish another module on the &lt;a href=&quot;http://drupal.org&quot;&gt;Drupal&lt;/a&gt; website.&lt;/p&gt;
+&lt;p&gt;During my time there, I&#039;ve developed countless modules, and (hopefully) helped improve a lot more, but the web development world can be busy enough that we don&#039;t get time to do a lot of contrib work.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/module-development-and-other-things&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/module-development-and-other-things#comments</comments>
+ <pubDate>Sat, 11 Sep 2010 17:19:14 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">96 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>CodeBreaker</title>
+    <link>http://www.vkareh.net/blog/codebreaker</link>
+    <description>&lt;p&gt;CodeBreaker is a MasterMind(tm) clone. I decided to program this on a lazy Sunday afternoon. I was tired of the lack of configuration of the gnome-mastermind client (which I love, nevertheless), and my knowledge of GTK is limited to less than nothing, so I programmed this one to allow the user to configure the number of holes, the number of colors, how many turns the user has, and if you want to repeat colors in the code or not.&lt;/p&gt;
+&lt;p&gt;As it stands, it has no real colors. It&#039;s all represented by numbers using drop-down boxes. All through Drupal&#039;s Form API. Maybe some other lazy Sunday afternoon I&#039;ll program a nicer jQuery interface.&lt;/p&gt;
+&lt;p&gt;You can play it here: &lt;a href=&quot;http://www.vkareh.net/codebreaker&quot; title=&quot;http://www.vkareh.net/codebreaker&quot;&gt;http://www.vkareh.net/codebreaker&lt;/a&gt;&lt;/p&gt;
+</description>
+     <comments>http://www.vkareh.net/blog/codebreaker#comments</comments>
+ <pubDate>Mon, 21 Dec 2009 06:24:29 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">30 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>Drupal Training - Beginner Level</title>
+    <link>http://www.vkareh.net/blog/drupal-training-beginner-level</link>
+    <description>Apart from the &lt;a href=&quot;http://groups.drupal.org/ann-arbor&quot;&gt;Ann Arbor Drupal User Group&lt;/a&gt;, in which we meet every month to discuss all things Drupal, we&#039;ve been wanting actual Drupal training for a while. Whether it is a class, a seminar, DrupalCamp, or the official DrupalCon, there&#039;s always something new to learn.
+
+Weeks ago I learned of a &lt;a href=&quot;http://groups.drupal.org/node/32436&quot;&gt;Drupal workshop&lt;/a&gt; in town organized by one of our very own A2DUG members, Jim.
+
+I could not attend the first session, last Wednesday, due to being out of town, so I don&#039;t know what happened.&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/drupal-training-beginner-level&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/drupal-training-beginner-level#comments</comments>
+ <category domain="http://www.vkareh.net/tags/drupal-planet">Drupal Planet</category>
+ <category domain="http://www.vkareh.net/tags/training">Training</category>
+ <pubDate>Wed, 04 Nov 2009 05:08:21 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">28 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>My name on Date.module!</title>
+    <link>http://www.vkareh.net/blog/my-name-datemodule</link>
+    <description>&lt;p&gt;I was checking my &lt;a href=&quot;http://drupal.org/project/issues/user/144520&quot;&gt;Drupal issue queue&lt;/a&gt; and saw an update to an &lt;a href=&quot;http://drupal.org/node/408770&quot;&gt;issue&lt;/a&gt; on which I gave a possible solution around 3 months ago. It was marked as fixed by the the maintainer, &lt;a href=&quot;http://drupal.org/user/45874&quot;&gt;KarenS&lt;/a&gt;, known to pretty much everyone in the active &lt;a href=&quot;http://drupal.org&quot;&gt;Drupal&lt;/a&gt; community for her &lt;a href=&quot;http://drupal.org/project/date&quot;&gt;Date&lt;/a&gt; and &lt;a href=&quot;http://drupal.org/project/calendar&quot;&gt;Calendar&lt;/a&gt; modules. So, my solution actually made it to the official &lt;a href=&quot;http://drupal.org/node/579000&quot;&gt;release&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/my-name-datemodule&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/my-name-datemodule#comments</comments>
+ <pubDate>Mon, 21 Sep 2009 19:22:39 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">26 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>DrupalCon 2009: Here I Go!</title>
+    <link>http://www.vkareh.net/blog/drupalcon-2009-here-i-go</link>
+    <description>Good fortune is on my side. This was more evident when I found out that the DrupalCon guys were starting a wait-list, starting in order from those that posted a request for a ticket.. The fortunate part was that I was one of the very first in the forum. Phew!
+
+Still, I didn&#039;t get my ticket thanks to that wait-list, but because someone that couldn&#039;t make it to the conference did the same. I will assume that he went, one by one, FIFO-style, through the list of those who posted in the forum, until he found the next one in line without a ticket.&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/drupalcon-2009-here-i-go&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/drupalcon-2009-here-i-go#comments</comments>
+ <pubDate>Thu, 12 Feb 2009 05:58:45 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">10 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>DrupalCon DC: Sold Out!</title>
+    <link>http://www.vkareh.net/blog/drupalcon-dc-sold-out</link>
+    <description>&lt;p&gt;This morning my manager said: &quot;Victor, I&#039;ve got good news for you! The company will pay for your conference, plane ticket, hotel, the works!&quot;. Yay! I was suddenly the happiest person alive. I quickly went to my computer and loaded up the &lt;a href=&quot;http://dc2009.drupalcon.org&quot;&gt;DrupalCon&lt;/a&gt; website. I felt the blood in the upper part of my body go to my legs when I saw the evil sign that said &quot;Sold Out!&quot;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fail.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/drupalcon-dc-sold-out&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/drupalcon-dc-sold-out#comments</comments>
+ <pubDate>Wed, 28 Jan 2009 18:04:50 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">9 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>ArbCamp 2008</title>
+    <link>http://www.vkareh.net/blog/arbcamp-2008</link>
+    <description>&lt;p&gt;A few weeks ago I read about &lt;a href=&quot;http://a2geeks.org/display/geek/ArbCamp+08&quot;&gt;ArbCamp 2008&lt;/a&gt; in the &lt;a href=&quot;http://a2geeks.org/&quot;&gt;a2geeks.org&lt;/a&gt; website. I promptly signed up to attend. Free pizza and geek talk is too good an opportunity to pass.&lt;/p&gt;
+&lt;p&gt;The sign-up list filled up pretty quickly, so they opened up a waiting list. When they saw that that one was also filled quickly, they changed from SPARK Central to CottageInn Pizza. We took control of the second level, which is pretty big, and it was still crowded. I love the A2 geek community.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/arbcamp-2008&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/arbcamp-2008#comments</comments>
+ <pubDate>Fri, 19 Dec 2008 04:37:15 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">8 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>Multistep for CCK</title>
+    <link>http://www.vkareh.net/blog/multistep-cck</link>
+    <description>&lt;p&gt;In a &lt;a href=&quot;http://vkareh.net/blog/data-dictionary-drupal-content-types&quot;&gt;previous post&lt;/a&gt; I mentioned that I created a Drupal module that takes any CCK content type and enables multistep functionality for it.&lt;/p&gt;
+&lt;p&gt;Nice. I finally took the time to remove any non-generic and non-standard code, so that I can publish it.&lt;/p&gt;
+&lt;p&gt;I&#039;ll quote from the README:&lt;br /&gt;
+&lt;cite&gt;Multistep adds multiple-step functionality to content type editing forms. It does so by assigning a step number to each fieldgroup within the content type and hiding all the groups that do not belong to the current step. The user can then use different submitting buttons that will redirect to the previous, next, or current step.&lt;/cite&gt;&lt;/p&gt;
+&lt;p&gt;&lt;cite&gt;The module also provides a block for each content type with a menu of the different groups within that form. This provides an easy way to jump to different steps throughout the form without having to go one by one.&lt;/cite&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/multistep-cck&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/multistep-cck#comments</comments>
+ <pubDate>Mon, 15 Dec 2008 16:20:34 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">7 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>First published module</title>
+    <link>http://www.vkareh.net/blog/first-published-module</link>
+    <description>&lt;p&gt;This weekend I got my first CVS submission to Drupal accepted. It&#039;s the aforementioned CCK Field Definitions module, available &lt;a href=&quot;http://drupal.org/project/cck_field_defs&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;With this, I am officially an initiated drupaler, but first I had to get it actually committed to the repositories.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/first-published-module&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/first-published-module#comments</comments>
+ <pubDate>Wed, 26 Nov 2008 01:19:10 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">5 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>You know you&#039;re a drupaler...</title>
+    <link>http://www.vkareh.net/blog/you-know-youre-drupaler</link>
+    <description>&lt;p&gt;...when you go to your first local Drupal User Group meeting and think it&#039;s cool to hang out in IRC trying (although not always succeeding) to help other people while talking geek stuff.&lt;/p&gt;
+&lt;p&gt;And so was my first experience with the &lt;a href=&quot;http://groups.drupal.org/ann-arbor&quot;&gt;Ann Arbor Drupal User Group&lt;/a&gt;,&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/you-know-youre-drupaler&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/you-know-youre-drupaler#comments</comments>
+ <pubDate>Tue, 25 Nov 2008 04:42:27 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">4 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>Data dictionary for Drupal content types</title>
+    <link>http://www.vkareh.net/blog/data-dictionary-drupal-content-types</link>
+    <description>&lt;p&gt;This &lt;a href=&quot;http://drupal.org&quot;&gt;Drupal&lt;/a&gt; module displays your &lt;a href=&quot;http://drupal.org/project/cck&quot;&gt;CCK&lt;/a&gt; content type fields along with their descriptions in a dictionary-like fashion. It also allows certain users to edit those descriptions.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/data-dictionary-drupal-content-types&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/data-dictionary-drupal-content-types#comments</comments>
+ <pubDate>Tue, 18 Nov 2008 14:38:27 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">2 at http://www.vkareh.net</guid>
+  </item>
+  <item>
+    <title>Hello World!</title>
+    <link>http://www.vkareh.net/blog/hello-world</link>
+    <description>&lt;p&gt;First post!&lt;/p&gt;
+&lt;p&gt;I&#039;ve been a &lt;a href=&quot;http://drupal.org&quot;&gt;Drupal&lt;/a&gt; developer for well over a year now. Up to now, I didn&#039;t really give much thought to the fact that I&#039;ve developed countless modules for it, and modified some others.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.vkareh.net/blog/hello-world&quot; target=&quot;_blank&quot;&gt;read more&lt;/a&gt;&lt;/p&gt;</description>
+     <comments>http://www.vkareh.net/blog/hello-world#comments</comments>
+ <pubDate>Mon, 17 Nov 2008 19:40:51 +0000</pubDate>
+ <dc:creator>vkareh</dc:creator>
+ <guid isPermaLink="false">1 at http://www.vkareh.net</guid>
+  </item>
+  </channel>
+</rss>

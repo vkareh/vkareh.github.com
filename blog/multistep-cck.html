@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" href="../images/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Multistep for CCK | vkareh.net, LLC</title>
+  </head>
+
+  <!--
+    Thanks for checking out my website source code!
+    I enjoy following coding standards and best practices and I take great pride in my code.
+    Feel free to contact me to discuss projects.
+  -->
+
+  <body>
+
+    <header>
+      <div class="inner">
+        <h1>vkareh.net</h1>
+        <h2>Professional Drupal and node.js development for functional websites.</h2>
+      </div>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html" title="Home">Home</a></li>
+        <li><a href="../about.html" title="About">About</a></li>
+        <li><a href="../cv.html" title="Curriculum vit&aelig;">Curriculum vit&aelig;</a></li>
+        <li><a href="../blog/index.html" title="Blog" class="active">Blog</a></li>
+        <li><a href="../contact.html" title="Contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+
+        <section id="main-content">
+          <h3>Multistep for CCK</h3>
+          <div id="post-date">December 15, 2008</div>
+          <p>In a <a href="data-dictionary-drupal-content-types.html">previous post</a> I mentioned that I created a Drupal module that takes any CCK content type and enables multistep functionality for it.</p>
+          <p>Nice. I finally took the time to remove any non-generic and non-standard code, so that I can publish it.</p>
+          <p>I'll quote from the README:</p>
+          <blockquote>Multistep adds multiple-step functionality to content type editing forms. It does so by assigning a step number to each fieldgroup within the content type and hiding all the groups that do not belong to the current step. The user can then use different submitting buttons that will redirect to the previous, next, or current step.</blockquote>
+          <blockquote>The module also provides a block for each content type with a menu of the different groups within that form. This provides an easy way to jump to different steps throughout the form without having to go one by one.</blockquote>
+          <blockquote>The groups are shown/hidden with jQuery, but work is being done to do it through PHP, or at least degrade it gracefully.</blockquote>
+          <p>I hope this module is of use to anyone that needs it.</p>
+          <p>The actual module can be found here: <a href="http://drupal.org/project/multistep">http://drupal.org/project/multistep</a></p>
+        </section>
+
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2012 vkareh.net, LLC
+    </footer>
+
+  </body>
+</html>
