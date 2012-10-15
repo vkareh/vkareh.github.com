@@ -25,6 +25,16 @@
       })();
     </script>
 
+    <script type="text/javascript">
+      var disqus_shortname = 'vkareh';
+      var disqus_identifier = 'data-dictionary-drupal-content-types';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+
     <title>Data dictionary for Drupal content types | vkareh.net, LLC</title>
   </head>
 
@@ -65,6 +75,11 @@
           <p>I still haven't gotten to the purpose. So whenever the users want to study all the fields at a glance, without having to browse through the actual form, they need a nice dictionary layout of the fields. Initially, I copy/pasted all the definitions into a page and formatted it using &lt;dt&gt; and &lt;dd&gt; tags, but it turns out that these field descriptions are revised quarterly, or sometimes even monthly, due to changes in practices in the health care industry.</p>
           <p>The hell I was allowing the coordinators to touch the CCK fields to change the descriptions, and I wasn't about to hack core to allow them either. Nor was I going to update the fields myself upon request, since my time is better spent doing work. So I sat down to write this module.</p>
           <p><em>Edit: I submitted this project to <a href="http://drupal.org">drupal.org</a> and it got approved. The link for the project is <a href="http://drupal.org/project/cck_field_defs">http://drupal.org/project/cck_field_defs</a></em></p>
+
+          <section id="comments">
+            <div id="disqus_thread"></div>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </section>
         </section>
 
       </div>

@@ -25,6 +25,16 @@
       })();
     </script>
 
+    <script type="text/javascript">
+      var disqus_shortname = 'vkareh';
+      var disqus_identifier = 'eclipse-drupal-ubuntu';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+
     <title>Eclipse for Drupal in Ubuntu | vkareh.net, LLC</title>
   </head>
 
@@ -305,6 +315,11 @@ sudo aptitude hold `dpkg -l | grep php5| awk '{print $2}' |tr "\n" " "`
             <li>Go back to the PHP perspective</li>
           </ol>
           <p>Play around and have fun! Debugging can be a very satisfying experience, if done well and with purpose. If you managed to read all the way down to the end of this article: wow! I'm impressed! If not, it's okay, someone, somewhere, will find it useful.</p>
+
+          <section id="comments">
+            <div id="disqus_thread"></div>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </section>
         </section>
 
       </div>
