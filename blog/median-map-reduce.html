@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="icon" type="image/png" href="../images/favicon.ico" />
+    <link rel="alternate" type="application/rss+xml" title="vkareh.net" href="../rss.xml" />
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-5211967-2']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript">
+      var disqus_shortname = 'vkareh';
+      var disqus_identifier = 'median-map-reduce';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+
+    <title>Calculating median with CouchDB map/reduce | vkareh.net, LLC</title>
+  </head>
+
+  <!--
+    Thanks for checking out my website source code!
+    I enjoy following coding standards and best practices and I take great pride in my code.
+    Feel free to contact me to discuss projects.
+  -->
+
+  <body>
+
+    <header>
+      <div class="inner">
+        <h1>vkareh.net</h1>
+        <h2>Professional Drupal and node.js development for functional websites.</h2>
+      </div>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html" title="Home">Home</a></li>
+        <li><a href="../about.html" title="About">About</a></li>
+        <li><a href="../cv.html" title="Curriculum vit&aelig;">Curriculum vit&aelig;</a></li>
+        <li><a href="../projects.html" title="Projects">Projects</a></li>
+        <li><a href="../blog/index.html" title="Blog" class="active">Blog</a></li>
+        <li><a href="../contact.html" title="Contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+
+        <section id="main-content">
+          <h3>Calculating median with CouchDB map/reduce</h3>
+          <div id="post-date">November 19, 2012</div>
+          <p>
+            <h4>Map function</h4>
+            <pre>function(doc) {
+  if (doc.type === 'salary' && doc.salary > 0) {
+    emit([
+      doc.year,
+      doc.department,
+      doc.title,
+    ], doc.salary);
+  }
+}</pre>
+            <h4>Reduce function</h4>
+            <pre>function(keys, values, rereduce) {
+  if (!rereduce) {
+    var length = values.length;
+    var _values = values.slice().sort(function( a, b ) { return a - b; });
+    var left, right;
+    if (length % 2 === 0) {
+      left = _values[length / 2 - 1];
+      right = _values[length / 2];
+    } else {
+      left = _values[length / 2 - 0.5];
+      right = _values[length / 2 - 0.5];
+    }
+    var median = !( length & 1 ) ? ( _values[( length / 2 ) - 1 ] + _values[( length / 2 )]) / 2 : _values[( length / 2 ) | 0 ];
+    return [median, left, right, length];
+  } else {
+    var length = sum(values.map(function(v){ return v[3]; }));
+    var _left = values.map(function(v) { return v[1]; }).slice().sort(function( a, b ) { return a - b; });
+    var left = _left.pop();
+    var _right = values.map(function(v) { return v[2]; }).slice().sort(function( a, b ) { return a - b; });
+    var right = _right.shift();
+    if (length % 2 === 0) {
+      return [(left + right / 2), left, right, length];
+    } else {
+      return [(right), left, right, length];
+    }
+  }
+}</pre>
+          </p>
+
+          <section id="comments">
+            <div id="disqus_thread"></div>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </section>
+        </section>
+
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2012 vkareh.net, LLC
+    </footer>
+
+  </body>
+</html>
