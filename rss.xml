@@ -2,32 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vkareh.net</title>
-    <link>http://vkareh.github.com/blog/index.html</link>
+    <link>http://www.vkareh.net/blog/index.html</link>
     <description>Professional Drupal and node.js development for functional websites.</description>
     <language>en-us</language>
     <pubDate>Fri, 24 Aug 2012 12:00:00 -0400</pubDate>
     <lastBuildDate>Fri, 24 Aug 2012 12:00:00 -0400</lastBuildDate>
-    <atom:link href="http://vkareh.github.com/rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.vkareh.net/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Calculating median with CouchDB map/reduce</title>
+      <link>http://www.vkareh.net/blog/median-map-reduce.html</link>
+      <description>While medians are traditionally easy to calculate (sort a list of values and find the true mid-point of the set), calculating this using map/reduce functions is pretty much impossible. This method will allow you to calculate medians in CouchDB in a way that should scale well for millions of records.</description>
+      <pubDate>Wed, 21 Nov 2012 12:00:00 -0400</pubDate>
+      <guid isPermaLink="false">http://www.vkareh.net/blog/median-map-reduce.html</guid>
+    </item>
     <item>
       <title>InnoDB on Ubuntu?</title>
-      <link>http://vkareh.github.com/blog/innodb-ubuntu.html</link>
-      <description>I'm currently working on a Drupal 6.x website that recently changed its database storage engine to InnoDB. I was not very aware at the time, but it does have some issues while running on Ubuntu.&lt;br /&gt;&lt;a href="http://vkareh.github.com/blog/innodb-ubuntu.html"&gt;Read more...&lt;/a&gt;</description>
+      <link>http://www.vkareh.net/blog/innodb-ubuntu.html</link>
+      <description>I'm currently working on a Drupal 6.x website that recently changed its database storage engine to InnoDB. I was not very aware at the time, but it does have some issues while running on Ubuntu.&lt;br /&gt;&lt;a href="http://www.vkareh.net/blog/innodb-ubuntu.html"&gt;Read more...&lt;/a&gt;</description>
       <pubDate>Tue, 03 May 2011 12:00:00 -0400</pubDate>
-      <guid isPermaLink="false">http://vkareh.github.com/blog/innodb-ubuntu.html</guid>
+      <guid isPermaLink="false">http://www.vkareh.net/blog/innodb-ubuntu.html</guid>
     </item>
     <item>
       <title>Render Arrays</title>
-      <link>http://vkareh.github.com/blog/render-arrays.html</link>
-      <description>It seems that documentation on renderable arrays for Drupal 7 is lacking. I was working on upgrading the Multistep module to Drupal 7, and turns out that the navigation/progress-bar block was still returning an HTML string. Unacceptable. I need to fix that by returning Render Arrays instead.&lt;br /&gt;&lt;a href="http://vkareh.github.com/blog/render-arrays.html"&gt;Read more...&lt;/a&gt;</description>
+      <link>http://www.vkareh.net/blog/render-arrays.html</link>
+      <description>It seems that documentation on renderable arrays for Drupal 7 is lacking. I was working on upgrading the Multistep module to Drupal 7, and turns out that the navigation/progress-bar block was still returning an HTML string. Unacceptable. I need to fix that by returning Render Arrays instead.&lt;br /&gt;&lt;a href="http://www.vkareh.net/blog/render-arrays.html"&gt;Read more...&lt;/a&gt;</description>
       <pubDate>Thu, 03 Feb 2011 12:00:00 -0400</pubDate>
-      <guid isPermaLink="false">http://vkareh.github.com/blog/render-arrays.html</guid>
+      <guid isPermaLink="false">http://www.vkareh.net/blog/render-arrays.html</guid>
     </item>
     <item>
       <title>nid in $form_state</title>
-      <link>http://vkareh.github.com/blog/nid-formstate.html</link>
-      <description>The other day I had an interesting "chicken-and-egg" problem.&lt;br /&gt;&lt;a href="http://vkareh.github.com/blog/nid-formstate.html"&gt;Read more...&lt;/a&gt;</description>
+      <link>http://www.vkareh.net/blog/nid-formstate.html</link>
+      <description>The other day I had an interesting "chicken-and-egg" problem.&lt;br /&gt;&lt;a href="http://www.vkareh.net/blog/nid-formstate.html"&gt;Read more...&lt;/a&gt;</description>
       <pubDate>Tue, 07 Dec 2010 12:00:00 -0400</pubDate>
-      <guid isPermaLink="false">http://vkareh.github.com/blog/nid-formstate.html</guid>
+      <guid isPermaLink="false">http://www.vkareh.net/blog/nid-formstate.html</guid>
     </item>
   </channel>
 </rss>
