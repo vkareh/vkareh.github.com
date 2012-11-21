@@ -74,28 +74,23 @@
           <p>Since the values need to be ordered, we need to pass the salary as part of the key.</p>
           <pre>function(doc) {
   if (doc.type === 'salary' && doc.salary > 0) {
-    emit([
-      doc.year,
-      doc.department,
-      doc.title,
-      doc.salary
-    ], doc.salary);
+    emit([doc.year, doc.department, doc.title, doc.salary], doc.salary);
   }
 }</pre>
           <h4>Reduce function</h4>
-          <p>For the reduce, we just really need the total number of elements:</p>
+          <p>For the reduce, we just really need the total number of elements. CouchDB has a built-in function for this:</p>
           <pre>_count</pre>
           <h4>Calculation</h4>
-          <p>Now, to calculate, we need to perform two queries to CouchDB: one to get the number of elements, and the second one to get the mid-point value(s) based on the number of elements.</p>
+          <p>Now, to calculate we need to perform two queries to CouchDB: one to get the number of elements, and the second one to get the mid-point value(s) based on the number of elements.</p>
           <pre>http://localhost:5984/salaries/_design/stats/_view/median?startkey=[2012,"Engineering","Software Developer"]&endkey=[2012,"Engineering","Software Developer",{}]&reduce=true&group_level=3</pre>
           <p>This query will return the number of Software Developers in the Engineering department for 2012.</p>
           <p>Using this number, we run some simple arithmetic before querying for the second time. Say that the number was $_count = 15, we do the following:</p>
-          <pre>$skip = Math.ceil($_count / 2) - 1;
-$limit = ($_count % 2 === 0 ? 2 : 1);</pre>
+          <pre>$skip = Math.ceil($_count / 2) - 1; // 7
+$limit = $_count % 2 === 0 ? 2 : 1; // 1</pre>
           <p>The idea here is to skip the first half of the values, and only return 1 (or 2, if $_count is even), thus skipping also the second half of the values and returning only the mid-points.</p>
           <pre>http://localhost:5984/salaries/_design/stats/_view/median?starkey=[2012,"Engineering","Software Developer"]&skip=$skip&limit=$limit&reduce=false</pre>
           <p>This last query will return one or two values, depending on whether the $_count is odd or even, respectively. Once we have this, then we can easily get the true median.</p>
-          <pre>if (docs.length == 2) {
+          <pre>if (docs.length === 2) {
     median = docs[0] + docs[1] / 2;
 } else {
     median = docs[0];
