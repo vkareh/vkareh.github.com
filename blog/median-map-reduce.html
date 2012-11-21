@@ -69,32 +69,42 @@
 
         <section id="main-content">
           <h3>Calculating median with CouchDB map/reduce</h3>
-          <div id="post-date">November 19, 2012</div>
+          <div id="post-date">November 21, 2012</div>
+          <p>I use CouchDB for all sorts of projects these days. It's easy to set up, super cheap to host, and it's very friendly towards JavaScript platforms (i.e. <a href="http://www.nodejs.org">node.js</a>) since everything is stored in JSON objects.</p>
+          <p>One recent project of mine, <a href="http://www.usalaries.com">uSalaries</a>, uses CouchDB to store salary information for university employees (currently only University of Michigan is available, more may be added later).</p>
+          <p>While browsing for your favorite prof's salary or searching for your old university colleagues brings a good voyeuristic sense of satisfaction, the real power of this type of tool is in the possibility of aggregating this data to make sense of the numbers at a larger scale. Statistics!</p>
+          <p>I will happily take suggestions on what statistics you would like to see on the website, but for the time being I want to provide a breakdown of <em>minimum</em>, <em>maximum</em>, and <em>median</em> salaries per year, department and job title.</p>
+          <p>Calculating minimum and maximum is relatively easy using map/reduce functions, so I will not go over those in here. The topic of this post is medians.</p>
+          <p>While medians are traditionally easy to calculate (sort a list of values and find the true mid-point of the set), calculating this using map/reduce functions is pretty much impossible. The reason for this is that the median is largely dependent on the position of certain values, rather than the values themselves. Since CouchDB's reduce function partitions the data, and the return of each chunk has to be able to serve as input of itself, all while <em>not</em> growing faster than <code>O(log(n))</code>, you cannot just simply sort the values and get the mid-points. It just doesn't work like that; you don't have enough information about the position of the values in the full data set. I've tried.</p>
+          <p>How do we calculate medians, then? It's a two-step process.</p>
           <h4>Map function</h4>
-          <p>Since the values need to be ordered, we need to pass the salary as part of the key.</p>
+          <p>The first thing you need to consider is how to order the list of values. In our example, you will definitely want to emit the salary as a value, but to have it sorted you also need to emit it as part of the key. Here is my <code>map</code> function:</p>
           <pre>function(doc) {
   if (doc.type === 'salary' && doc.salary > 0) {
     emit([doc.year, doc.department, doc.title, doc.salary], doc.salary);
   }
 }</pre>
+          <p>Basically, I'm ordering the data in hierarchical fashion: year, department, job title. The salary is only emitted for the purpose of having each key sorted by salary. We will use this on our second step.</p>
           <h4>Reduce function</h4>
-          <p>For the reduce, we just really need the total number of elements. CouchDB has a built-in function for this:</p>
+          <p>For the reduce, we just really need the total number of elements. The idea is to know how many elements are in the set, given a specific key-range. CouchDB has a built-in function for this:</p>
           <pre>_count</pre>
           <h4>Calculation</h4>
           <p>Now, to calculate we need to perform two queries to CouchDB: one to get the number of elements, and the second one to get the mid-point value(s) based on the number of elements.</p>
           <pre>http://localhost:5984/salaries/_design/stats/_view/median?startkey=[2012,"Engineering","Software Developer"]&endkey=[2012,"Engineering","Software Developer",{}]&reduce=true&group_level=3</pre>
-          <p>This query will return the number of Software Developers in the Engineering department for 2012.</p>
-          <p>Using this number, we run some simple arithmetic before querying for the second time. Say that the number was $_count = 15, we do the following:</p>
+          <p>This query will return the number of Software Developers in the Engineering department for 2012. It will not return the values, just the count, since we are using the <code>_count</code> reduce function. We want this number so that we know where is the mid-point in our data set, since it's already sorted in the <code>map</code> function.</p>
+          <p>Using this number, we run some simple arithmetic before querying for the second time. Say that the number was <code>$_count = 15</code>, we do the following:</p>
           <pre>$skip = Math.ceil($_count / 2) - 1; // 7
 $limit = $_count % 2 === 0 ? 2 : 1; // 1</pre>
-          <p>The idea here is to skip the first half of the values, and only return 1 (or 2, if $_count is even), thus skipping also the second half of the values and returning only the mid-points.</p>
+          <p>The idea here is to skip the first half of the values, and only return 1 (or 2, if $_count is even), thus skipping also the second half of the values and returning only the mid-points. Thus, our second query does precisely that:</p>
           <pre>http://localhost:5984/salaries/_design/stats/_view/median?starkey=[2012,"Engineering","Software Developer"]&skip=$skip&limit=$limit&reduce=false</pre>
-          <p>This last query will return one or two values, depending on whether the $_count is odd or even, respectively. Once we have this, then we can easily get the true median.</p>
+          <p>This query will return one or two values, depending on whether the $_count is odd or even, respectively. Once we have this, then we can easily get the true median. This step needs to be done at the application layer.</p>
           <pre>if (docs.length === 2) {
     median = docs[0] + docs[1] / 2;
 } else {
     median = docs[0];
 }</pre>
+          <p>This should not be terribly difficult to understand if you are used to CouchDB. The main benefit of doing it this way, even with two queries (and the latency involved in the HTTP requests), is that you will be able to calculate the median of <em>really</em> large data sets (we're talking hundreds of thousands of values, but it can certainly scale into the millions), while only transmitting a single numeric value and <em>at most</em> two JSON documents.</p>
+          <p>Another fun thing about this particular way of calculating medians is that you should be able to use different <code>group_level</code> values in your query to get median breakdowns by job title, by department, and by year. All by changing a single number in your query.</p>
 
           <section id="comments">
             <div id="disqus_thread"></div>
