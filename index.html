@@ -1,97 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Professional javascript and node.js engineering for functional websites." />
-    <link rel="icon" type="image/png" href="images/favicon.ico" />
-    <link rel="alternate" type="application/rss+xml" title="vkareh.net" href="rss.xml" />
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-5211967-2']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-
-    <title>vkareh.net, LLC | Professional javascript and node.js engineering for functional websites</title>
+    <meta name="description" content="Personal website of Victor Kareh" />
+    <link rel="icon" type="image/png" href="favicon.ico" />
+    <title>Víctor Kareh Fábregas</title>
   </head>
 
-  <!--
-    Thanks for checking out my website source code!
-    I enjoy following coding standards and best practices and I take great pride in my code.
-    Feel free to contact me to discuss projects.
-  -->
-
   <body>
-
     <header>
-      <div class="inner">
-        <h1>vkareh.net</h1>
-        <h2>Professional javascript and node.js engineering for functional websites.</h2>
-      </div>
+      <h1>Víctor Kareh Fábregas</h1>
     </header>
 
-    <nav>
+    <section>
+      <h2>About</h2>
+      <p>My name is Víctor. Here are some highlights about my life:</p>
       <ul>
-        <li><a href="index.html" title="Home" class="active">Home</a></li>
-        <li><a href="about.html" title="About">About</a></li>
-        <li><a href="cv.html" title="Curriculum vit&aelig;">Curriculum vit&aelig;</a></li>
-        <li><a href="projects.html" title="Projects">Projects</a></li>
-        <li><a href="blog/index.html" title="Blog">Blog</a></li>
-        <li><a href="contact.html" title="Contact">Contact</a></li>
+        <li>1982 - 2007 Puerto Rico: was born, attended school, university</li>
+        <li>2007 - 2020 Ann Arbor: career, got married, had children, bought a house</li>
+        <li>2020 - <span id="present"></span> Quebec: moved closer to in-laws, bought a hobby farm</li>
       </ul>
-    </nav>
+    </section>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
+    <section>
+      <h2>Work</h2>
+      <p>
+        I work at <a href="https://www.redhat.com/en">Red Hat</a> as a <a href="https://www.linkedin.com/in/vkareh/">Principal Software Engineer</a>.
+        The majority of the projects I work on are related to managed services, particularly of <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">OpenShift</a>.
+      </p>
 
-        <section id="main-content">
+      <p>
+        Some of the projects I work on here are:
+      </p>
+      <ul>
+        <li><a href="https://aws.amazon.com/rosa">Red Hat OpenShift on AWS</a> (ROSA)</li>
+        <li><a href="https://console.redhat.com/openshift">OpenShift Cluster Manager</a> (OCM)</li>
+      </ul>
 
-          <div class="boxes">
-            <div class="box">
-              <h3>Full-scale architecture</h3>
-              <img src="images/architecture.png" alt="Full-scale architecture" title="Full-scale architecture" />
-              <p>Due to the growing complexity of web applications and the need for easy maintenance, the success of your project will largely depend on having the right architecture.</p>
-              <p>A good architectural design for your web application is critical to simplifying the development process, preventing feature creep, and saving your organization time and money.</p>
-              <p>Let me help you decide on the right architecture and technology stack for your web application.</p>
-            </div>
-            <div class="box">
-              <h3>Website engineering</h3>
-              <img src="images/engineering.png" alt="Website engineering" title="Website engineering" />
-              <p>High quality engineering is necessary for a high quality website that is both easy to use and maintain.</p>
-              <p>Whether your project is a simple customization or a full-fledged web 3.0 semantic application, the key is a deep understanding of your requirements. Only a professional can guarantee that.</p>
-              <p>Let my extensive <a href="cv.html#experience">experience</a> and software engineering <a href="cv.html#education">background</a> take care of your software development process; trust only a professional.</p>
-            </div>
-            <div class="box">
-              <h3>Module development</h3>
-              <img src="images/development.png" alt="Module development" title="Module development" />
-              <p>A sustainable project requires the right components. Choosing the right modules will make your website faster, more secure, and easier to maintain and upgrade.</p>
-              <p>I have been doing software and web development for well over a decade and have a deep understanding and knowledge of the different frameworks and module ecosystems.</p>
-              <p>Let my experience speak for itself: my proven track record of <a href="https://github.com/vkareh">published software</a> has helped thousands of websites become a reality.</p>
-            </div>
-          </div>
+      <p>
+        Most of my time is spent attending meetings, designing new features (and writing the specs), writing code (mostly in <a href="https://golang.org">Golang</a>), and reviewing my teammates' code (which is usually better than mine).
+      </p>
+    </section>
 
-        </section>
+    <section>
+      <h2>Free Software</h2>
+      <p>
+        I'm passionate about Linux, Free Software, Open Source.
+        I enjoy developing and contributing to various projects, especially when they make my life better.
+      </p>
 
-      </div>
-    </div>
+      <p>
+        Some of the projects I regularly devote time to:
+      </p>
+      <ul>
+        <li><a href="https://mate-desktop.org">MATE Desktop</a> (I'm one of the maintainers)</li>
+        <li><a href="https://ubuntu-mate.org">Ubuntu MATE</a> (even though I use <a href="https://getfedora.org">Fedora</a> these days)</li>
+        <li>Various projects under the <a href="https://www.gnome.org">GNOME</a> umbrella.</li>
+      </ul>
+
+      <p>
+        I also have plenty of smaller/one-off contributions to many other projects. Check out my <a href="https://github.com/vkareh">GitHub</a> for more stuff.
+      </p>
+
+      <p>
+        In addition to contributing, there are other projects that I rely on every day and are dear to me:
+      </p>
+      <ul>
+        <li><a href="https://www.vim.org">Vim</a> text editor</li>
+        <li><a href="http://mutt.org">Mutt</a> e-mail client</li>
+        <li><a href="https://weechat.org">WeeChat</a> IRC client</li>
+        <li><a href="https://pidgin.im">Pidgin</a> instant messenger client</li>
+        <li><a href="https://lzone.de/liferea">Liferea</a> RSS reader</li>
+        <li><a href="https://syncthing.net">Syncthing</a> continuous file synchronization program</li>
+        <li><a href="https://lineageos.org">LineageOS</a> Android-based operating system</li>
+        <li><a href="https://k9mail.app">K-9</a> mobile mail client</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Homesteading</h2>
+      <p>
+        My family and I live in the countryside and lead a <a href="https://en.wikipedia.org/wiki/Homesteading">homesteading</a> lifestyle.
+        We homeschool our children and actively work towards local food self-sufficiency.
+      </p>
+      <ul>
+        <li>We try to grow what we eat (fruits, vegetables, eggs).</li>
+        <li>What we don't [yet] grow, we source from neighboring farms (meat, dairy, extra fruit).</li>
+        <li>What we can't source from neighboring farms, we buy in bulk from local sources (dried beans, wheat grain).</li>
+        <li>What can't be produced locally, we import (coffee, chocolate).</li>
+        <li>We eat fresh produce only when it's in season.</li>
+        <li>We preserve food after harvest to last us through winter.</li>
+      </ul>
+      <p>It's a rewarding lifestyle full of fun challenges.</p>
+    </section>
 
     <footer>
-      &copy; 2016 vkareh.net, LLC
+      &copy; <span id="copyright"></span> Víctor Kareh
     </footer>
 
+    <script>
+      document.getElementById("present").innerHTML = new Date().getFullYear();
+      document.getElementById("copyright").innerHTML = new Date().getFullYear();
+    </script>
   </body>
 </html>
