@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Rules of May I? card game" />
+    <link rel="icon" type="image/png" href="favicon.ico" />
+    <title>May I?</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>May I?</h1>
+    </header>
+
+    <section id="intro">
+      <p>
+        <em>May I?</em> is a card game of the <a href="https://en.wikipedia.org/wiki/Rummy" target="_blank">Rummy</a> family consisting of a series of rounds.
+        In each round there is a different objective: players have to collect a particular combination of <em>trios</em> and <em>straights</em> before they are allowed to lay down.
+        The objectives become progressively more demanding on each deal.
+      </p>
+      <p>
+        There are many variants of this game, but the rules here are as played in my family for at least 4 generations.
+      </p>
+    </section>
+
+    <section id="cards">
+      <h2>Cards</h2>
+      <p>
+        May I? is played with two standard decks of 54 cards for two to four players or three decks for five to six players, or four decks for seven to eight players.
+        Aces can be either high or low and Jokers are wildcards.
+      </p>
+    </section>
+
+    <section id="deal">
+      <h2>The deal</h2>
+      <p>
+        There are eight rounds altogether.
+        The first dealer is chosen randomly, and thereafter the turn to deal rotates clockwise.
+        The deal itself is clockwise, one card at a time.
+        In the first round, the players receive 7 cards each.
+        The number of cards dealt increases by one each round until each player receives 13 cards in the last two rounds.
+      </p>
+      <p>
+        The cards remaining after the deal are placed face down on the table to form the stock pile, the top card of which is turned face up and placed alongside to start the discard pile.
+      </p>
+    </section>
+
+    <section id="object">
+      <h2>Object of the game</h2>
+      <p>
+        The object of each round is to dispose of all your cards by a combination of laying down, laying off, and discarding.
+        In order to lay down or lay off, you must begin by fulfilling your objective for the round currently being played.
+      </p>
+      <p>
+        There are two kinds of melds: <em>trios</em> and <em>straights</em>.
+      </p>
+      <ul>
+        <li>A <em>trio</em> consists of three or more cards of the same rank, irrespective of suit, such as ♦️5 ♦️5 ♠️5.</li>
+        <li>A <em>straight</em> consists of four or more consecutive cards of the same suit, such as ♣️4 ♣️5 ♣️6 ♣️7.</li>
+      </ul>
+      <p>
+        Once it has been laid down, a straight can be extended by adding additional consecutive cards at either end.
+        The longest theoretically possible sequence being 12 cards long with an Ace either at the bottom or top, but not both.
+        A trio can be extended by adding additional cards of the same rank.
+      </p>
+      <p>
+        When a player goes out, by disposing of all their cards, the other players score penalty points for all the cards remaining in their hands.
+        The object of the game is to be the player with the lowest score at the end of the series of eight rounds.
+      </p>
+    </section>
+
+    <section id="objectives">
+      <h2>The objectives</h2>
+      <p>The objectives in each successive round are as the following:</p>
+      <ul>
+        <li>2 trios</li>
+        <li>1 trio, 1 straight</li>
+        <li>2 straights</li>
+        <li>3 trios</li>
+        <li>2 trios, 1 straight</li>
+        <li>2 straights, 1 trio</li>
+        <li>3 straights</li>
+        <li>4 trios (see <a href="#final-round">Final round</a>)</li>
+      </ul>
+    </section>
+
+    <section id="play">
+      <h2>The play</h2>
+      <p>The player to dealer’s left takes the first turn. A turn consists of:</p>
+      <ol>
+        <li>
+          <dt>The draw</dt>
+          <dd>
+            The player <strong>must</strong> either draw the top card of the stock pile or take the top card of the discard pile.
+            If the player has laid down their melds already, they can only draw from the stock pile.
+          </dd>
+        </li>
+        <li>
+          <dt>Laying down</dt>
+          <dd>
+            The player <strong>may</strong> place trios and straights from their hand face up on the table.
+            They must lay down only the combination required by the objective of the current round.
+            For example, if the round calls for a trio and a straight, they may not meld two trios and a straight.
+          </dd>
+        </li>
+        <li>
+          <dt>Laying off</dt>
+          <dd>
+            The player <strong>may</strong> add cards to trios or straights which have already been laid down, both the player’s own and those laid down by other players.
+            They must have laid down their own melds before laying off any cards.
+          </dd>
+        </li>
+        <li>
+          <dt>The discard</dt>
+          <dd>
+            At the end of their turn, the player <strong>must</strong> discard one card from their hand and place it face up on top of the discard pile (see <a href="#final-round">Final round</a>).
+            If the player is unable to discard because they ran out of cards, the round ends.
+          </dd>
+        </li>
+      </ol>
+      <p>
+        Play continues with players taking turns clockwise around the table until one person has gotten rid of all the cards from their hand.
+      </p>
+      <p>
+        It can occasionally happen that the stock pile runs out of cards.
+        If a player wishes to draw a card when there are no cards left in the stock pile, then all cards from the discard pile, except for the top one, are shuffled together and placed face down to make a new stock.
+        The top card of the old discard pile remains face up to start the new discard pile.
+        Play then continues as before.
+      </p>
+      <p>
+        If there are a lot of May I?’s (see <a href="#may-i">May I?</a>), it is conceivable that both the stock pile and the discard pile might run out of cards.
+        In that case the round ends.
+        There is no winner and everyone scores penalty points according to the cards that they have in their hands (see <a href="#scoring">Scoring</a>).
+      </p>
+    </section>
+
+    <section id="may-i">
+      <h2>Taking the discard out of turn (the "May I?")</h2>
+      <p>
+        If at the start of a turn the player chooses to draw from the stock rather than take the discard, any other player who desires the card on the top of the discard pile may ask for it by saying “May I?” (hence the name <em>May I?</em>).
+        If several people want the discard, it goes to the person whose turn is closest to the current player.
+        The player who takes the discard in this way must take in addition the top card from the stock as a penalty card.
+      </p>
+      <p>
+        After someone has taken the discard, it is <strong>not</strong> possible for a different player to take the next card of the discard pile.
+      </p>
+      <p>
+        After the discard and penalty cards are taken, the play resumes from its original point - the turn to play does not jump to the person who takes the discard.
+      </p>
+      <p>
+        Note also that if the player whose turn it is to play wishes to take the card at the top of the discard pile they may do so, without taking a penalty card from the stock pile, and no one else then has the chance to take any discards.
+      </p>
+    </section>
+
+    <section id="jokers">
+      <h2>Jokers</h2>
+      <p>
+        Jokers may be used in either trios or straights, to substitute for any missing card.
+        Only a single joker is allowed per meld.
+      </p>
+      <p>
+        If a joker is played in a straight, any player who has the card which the joker is representing, and who has already laid down, may, during the laying down phase of their turn, replace the joker in the meld with the card it represents.
+        The joker may now be used in any meld being laid down, or as part of the lay off phase of the same turn.
+      </p>
+      <p>
+        For example, a player has a straight: ♣️5, ♣️6, 🃏️, ♣️8 where the joker represents the ♣️7.
+        You are in the process of laying down your melds and are holding the ♣️7.
+        You may lay off the ♣️7 and use the joker to represent any other card in either your own melds or another player’s.
+      </p>
+      <p>
+        Jokers may not be replaced this way in trios.
+      </p>
+    </section>
+
+    <section id="final-round">
+      <h2>Final round</h2>
+      <p>
+        In the final round (4 trios), a player must lay down <strong>all</strong> their cards at once.
+        There is no discard - play ends immediately after the lay down.
+      </p>
+    </section>
+
+    <section id="scoring">
+      <h2>Scoring</h2>
+      <p>
+        When someone goes out by getting rid of all their cards, play ends and the other players score penalty points for all the cards remaining in their hands, the cards scoring as follows:
+      </p>
+      <ul>
+        <li>Number cards: face value</li>
+        <li>Face cards: 10 points</li>
+        <li>Aces: 15 points</li>
+        <li>Jokers: 20 points</li>
+      </ul>
+      <p>
+        At the end of the final round, the player with the lowest total score wins.
+      </p>
+    </section>
+
+    <section id="glossary">
+      <h2>Glossary</h2>
+      <ul>
+        <li>trio: A group of three or more cards of the same rank, irrespective of suit</li>
+        <li>straight: A group of four or more consecutive cards of the same suit</li>
+        <li>meld: Any scoring combination of cards, e.g. a <em>straight</em> or a <em>trio</em></li>
+        <li>lay down: To place down your melds face up on the table</li>
+        <li>lay off: To add cards to an existing laid-down meld</li>
+        <li>go out: To get rid of all your cards (either by lay down, lay off, or discard)</li>
+      </ul>
+    </section>
+
+    <!-- <footer> -->
+    <!--   &#38;copy; <span id="copyright"></span> Víctor Kareh -->
+    <!-- </footer> -->
+    <!--  -->
+    <!-- <script> -->
+    <!--   document.getElementById("copyright").innerHTML = new Date().getFullYear(); -->
+    <!-- </script> -->
+  </body>
+</html>
