@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset='utf-8' />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <meta name="description" content="Personal website of Victor Kareh" />
     <link rel="icon" href="favicon.ico" />
     <title>Víctor Kareh Fábregas</title>
-    <style>
+    <style type="text/css">
       html {
         font-size: 100%;
       }
@@ -27,8 +27,8 @@
     </header>
 
     <main>
-      <section>
-        <h2>About</h2>
+      <section role="region" aria-labelledby="about">
+        <h2 id="about">About</h2>
         <p>My name is Víctor. Here are some highlights about my life:</p>
         <ul>
           <li>1982 - 2007 <a href="https://en.wikipedia.org/wiki/Caguas,_Puerto_Rico">Caguas, Puerto Rico</a>: was born, attended school, went to university, became an engineer</li>
@@ -37,8 +37,8 @@
         </ul>
       </section>
 
-      <section>
-        <h2>Work</h2>
+      <section role="region" aria-labelledby="work">
+        <h2 id="work">Work</h2>
         <p>
           I work at <a href="https://www.redhat.com/en">Red Hat</a> as a <a href="https://www.linkedin.com/in/vkareh/">Senior Principal Software Engineer</a>.
           I help drive the engineering strategy and vision for <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Managed OpenShift</a> fleet engineering.
@@ -60,8 +60,8 @@
         </p>
       </section>
 
-      <section>
-        <h2>Free Software</h2>
+      <section role="region" aria-labelledby="free-software">
+        <h2 id="free-software">Free Software</h2>
         <p>
           I'm passionate about Linux, Free Software, Open Source.
           I enjoy developing and contributing to various projects, especially when they make my life better.
@@ -96,8 +96,8 @@
         </ul>
       </section>
 
-      <section>
-        <h2>Homesteading</h2>
+      <section role="region" aria-labelledby="homesteading">
+        <h2 id="homesteading">Homesteading</h2>
         <p>
           My family and I live in the countryside and lead a <a href="https://en.wikipedia.org/wiki/Homesteading">homesteading</a> lifestyle.
           We <a href="https://en.wikipedia.org/wiki/Homeschooling">homeschool</a> our children and actively work towards <a href="https://en.wikipedia.org/wiki/Food_sovereignty">local food self-sufficiency</a>.
@@ -118,9 +118,10 @@
       &copy; <span id="copyright"><noscript>2026</noscript></span> Víctor Kareh
     </footer>
 
-    <script>
+    <script type="text/javascript">
       document.getElementById("present").innerHTML = new Date().getFullYear();
       document.getElementById("copyright").innerHTML = new Date().getFullYear();
     </script>
+    <noscript></noscript>
   </body>
 </html>
