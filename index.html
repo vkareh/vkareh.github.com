@@ -3,9 +3,22 @@
   <head>
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="color-scheme" content="light dark" />
     <meta name="description" content="Personal website of Victor Kareh" />
     <link rel="icon" href="favicon.ico" />
     <title>Víctor Kareh Fábregas</title>
+    <style>
+      html {
+        font-size: 100%;
+      }
+      body {
+        font-family: serif;
+        max-width: 40rem;
+        margin: 0 auto;
+        padding: 1rem;
+        line-height: 1.5;
+      }
+    </style>
   </head>
 
   <body>
@@ -13,92 +26,96 @@
       <h1>Víctor Kareh Fábregas</h1>
     </header>
 
-    <section>
-      <h2>About</h2>
-      <p>My name is Víctor. Here are some highlights about my life:</p>
-      <ul>
-        <li>1982 - 2007 <a href="https://en.wikipedia.org/wiki/Caguas,_Puerto_Rico">Caguas, Puerto Rico</a>: was born, attended school, university</li>
-        <li>2007 - 2020 <a href="https://en.wikipedia.org/wiki/Ann_Arbor,_Michigan">Ann Arbor, Michigan</a>: career, got married, had children, bought a house</li>
-        <li>2020 - <span id="present"></span> <a href="https://en.wikipedia.org/wiki/Hemmingford,_Quebec_(township)">Hemmingford, Quebec</a>: international move, bought a hobby farm</li>
-      </ul>
-    </section>
+    <main>
+      <section>
+        <h2>About</h2>
+        <p>My name is Víctor. Here are some highlights about my life:</p>
+        <ul>
+          <li>1982 - 2007 <a href="https://en.wikipedia.org/wiki/Caguas,_Puerto_Rico">Caguas, Puerto Rico</a>: was born, attended school, went to university, became an engineer</li>
+          <li>2007 - 2020 <a href="https://en.wikipedia.org/wiki/Ann_Arbor,_Michigan">Ann Arbor, Michigan</a>: started career, got married, had 3 children, bought a house</li>
+          <li>2020 - <span id="present"><noscript>2026</noscript></span> <a href="https://en.wikipedia.org/wiki/Hemmingford,_Quebec_(township)">Hemmingford, Quebec</a>: moved internationally (twice in the same year), bought a hobby farm</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>Work</h2>
-      <p>
-        I work at <a href="https://www.redhat.com/en">Red Hat</a> as a <a href="https://www.linkedin.com/in/vkareh/">Senior Principal Software Engineer</a>.
-        I help drive the engineering strategy and vision for <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Managed OpenShift</a> fleet engineering.
-      </p>
+      <section>
+        <h2>Work</h2>
+        <p>
+          I work at <a href="https://www.redhat.com/en">Red Hat</a> as a <a href="https://www.linkedin.com/in/vkareh/">Senior Principal Software Engineer</a>.
+          I help drive the engineering strategy and vision for <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Managed OpenShift</a> fleet engineering.
+        </p>
 
-      <p>
-        Some of the projects I help with at Red Hat are:
-      </p>
-      <ul>
-        <li><a href="https://github.com/openshift-hyperfleet/">OpenShift HyperFleet</a></li>
-        <li><a href="https://aws.amazon.com/rosa">Red Hat OpenShift on AWS</a> (ROSA)</li>
-        <!-- <li><a href="https://azure.microsoft.com/en-us/products/openshift">Azure Red Hat OpenShift</a> (ARO)</li> -->
-        <li><a href="https://console.redhat.com/openshift">OpenShift Cluster Manager</a> (OCM)</li>
-      </ul>
+        <p>
+          Some of the projects I help with at Red Hat are:
+        </p>
+        <ul>
+          <li><a href="https://github.com/openshift-hyperfleet/">HyperFleet</a></li>
+          <li><a href="https://github.com/openshift-online/maestro">Maestro</a></li>
+          <li><a href="https://aws.amazon.com/rosa">Red Hat OpenShift on AWS</a> (ROSA)</li>
+          <!-- <li><a href="https://azure.microsoft.com/en-us/products/openshift">Azure Red Hat OpenShift</a> (ARO)</li> -->
+          <li><a href="https://console.redhat.com/openshift">OpenShift Cluster Manager</a> (OCM)</li>
+        </ul>
 
-      <p>
-        Most of my time is spent attending meetings, defining new paths forward, writing proof-of-concepts (mostly in <a href="https://golang.org">Golang</a>), and reviewing my teammates' designs.
-      </p>
-    </section>
+        <p>
+          Most of my time is spent attending meetings, defining new paths forward, writing proof-of-concepts (mostly in <a href="https://golang.org">Golang</a>), and reviewing my teammates' designs.
+        </p>
+      </section>
 
-    <section>
-      <h2>Free Software</h2>
-      <p>
-        I'm passionate about Linux, Free Software, Open Source.
-        I enjoy developing and contributing to various projects, especially when they make my life better.
-      </p>
+      <section>
+        <h2>Free Software</h2>
+        <p>
+          I'm passionate about Linux, Free Software, Open Source.
+          I enjoy developing and contributing to various projects, especially when they make my life better.
+        </p>
 
-      <p>
-        Some of the projects I regularly devote time to:
-      </p>
-      <ul>
-        <li><a href="https://mate-desktop.org">MATE Desktop</a> (I'm one of the maintainers)</li>
-        <li><a href="https://ubuntu-mate.org">Ubuntu MATE</a> (even though I use <a href="https://getfedora.org">Fedora</a> these days)</li>
-        <li>Various projects under the <a href="https://www.gnome.org">GNOME</a> umbrella.</li>
-      </ul>
+        <p>
+          Some of the projects I regularly devote time to:
+        </p>
+        <ul>
+          <li><a href="https://mate-desktop.org">MATE Desktop</a> (I'm one of the maintainers)</li>
+          <li><a href="https://ubuntu-mate.org">Ubuntu MATE</a> (even though I use <a href="https://getfedora.org">Fedora</a> these days)</li>
+          <li>Various projects under the <a href="https://www.gnome.org">GNOME</a> umbrella.</li>
+        </ul>
 
-      <p>
-        I also have plenty of smaller/one-off contributions to many other projects. Check out my <a href="https://github.com/vkareh">GitHub</a> for more stuff.
-      </p>
+        <p>
+          I also have plenty of smaller/one-off contributions to many other projects. Check out my <a href="https://github.com/vkareh">GitHub</a> for more stuff.
+        </p>
 
-      <p>
-        In addition to contributing, there are other projects that I rely on every day and are dear to me:
-      </p>
-      <ul>
-        <li><a href="https://www.vim.org">Vim</a> text editor</li>
-        <li><a href="http://mutt.org">Mutt</a> e-mail client</li>
-        <li><a href="https://weechat.org">WeeChat</a> IRC client</li>
-        <!-- <li><a href="https://pidgin.im">Pidgin</a> instant messenger client</li> -->
-        <li><a href="https://lzone.de/liferea">Liferea</a> RSS reader</li>
-        <li><a href="https://syncthing.net">Syncthing</a> continuous file synchronization program</li>
-        <li><a href="https://lineageos.org">LineageOS</a> Android-based operating system</li>
-        <li><a href="https://k9mail.app">K-9</a> mobile mail client</li>
-      </ul>
-    </section>
+        <p>
+          In addition to contributing, there are other projects that I rely on every day and are dear to me:
+        </p>
+        <ul>
+          <li><a href="http://mutt.org">Mutt</a> e-mail client</li>
+          <!-- <li><a href="https://weechat.org">WeeChat</a> IRC client</li> -->
+          <li><a href="https://pidgin.im">Pidgin</a> instant messenger client</li>
+          <li><a href="https://lzone.de/liferea">Liferea</a> RSS reader</li>
+          <li><a href="https://www.vim.org">Vim</a> text editor</li>
+          <li><a href="https://syncthing.net">Syncthing</a> continuous file synchronization program</li>
+          <li><a href="https://lineageos.org">LineageOS</a> Android-based operating system</li>
+          <li><a href="https://www.davx5.com">DAVx⁵</a> *dav sync on Android</li>
+          <li><a href="https://k9mail.app">K-9</a> mobile mail client</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>Homesteading</h2>
-      <p>
-        My family and I live in the countryside and lead a <a href="https://en.wikipedia.org/wiki/Homesteading">homesteading</a> lifestyle.
-        We <a href="https://en.wikipedia.org/wiki/Homeschooling">homeschool</a> our children and actively work towards <a href="https://en.wikipedia.org/wiki/Food_sovereignty">local food self-sufficiency</a>.
-      </p>
-      <ul>
-        <li>We grow our own food (fruits, vegetables, eggs).</li>
-        <li>We source from neighboring farms foods that we do not [yet] grow (meat, dairy, extra fruit).</li>
-        <li>We source from local sources bulk food that cannot be grown easily at small scale (dried beans, wheat grain).</li>
-        <li>We only import a few products that cannot be produced locally (coffee, chocolate).</li>
-        <li>We eat fresh produce only when it's in season.</li>
-        <li>We preserve food after harvest to last us through winter.</li>
-      </ul>
-      <p>It's a challenging and rewarding lifestyle.</p>
-    </section>
+      <section>
+        <h2>Homesteading</h2>
+        <p>
+          My family and I live in the countryside and lead a <a href="https://en.wikipedia.org/wiki/Homesteading">homesteading</a> lifestyle.
+          We <a href="https://en.wikipedia.org/wiki/Homeschooling">homeschool</a> our children and actively work towards <a href="https://en.wikipedia.org/wiki/Food_sovereignty">local food self-sufficiency</a>.
+        </p>
+        <ul>
+          <li>We raise a flock of mixed-breed chickens (eggs)</li>
+          <li>We grow a garden every season (vegetables)</li>
+          <li>We tend a few trees and shrubs (fruits)</li>
+          <li>We source food from neighboring farms (meat, dairy, extra produce)</li>
+          <li>We store dry grains grown in our region (beans, wheat)</li>
+          <li>We preserve food after harvest to last us through winter</li>
+          <li>We import a few necessary goodies (coffee, chocolate)</li>
+        </ul>
+      </section>
+    </main>
 
     <footer>
-      &copy; <span id="copyright"></span> Víctor Kareh
+      &copy; <span id="copyright"><noscript>2026</noscript></span> Víctor Kareh
     </footer>
 
     <script>
